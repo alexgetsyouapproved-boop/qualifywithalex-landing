@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Find out how much home you can afford with Alex. Mortgage affordability calculator and home loan guidance.">
+  <title>Qualify With Alex | Mortgage Affordability</title>
+  <style>
+    :root {
+      --blue-950: #071b3a;
+      --blue-900: #0b2c5f;
+      --blue-800: #123f7c;
+      --blue-700: #1758aa;
+      --blue-600: #1c6ed6;
+      --blue-100: #e9f3ff;
+      --blue-50: #f5faff;
+      --white: #ffffff;
+      --ink: #122033;
+      --muted: #5f6f86;
+      --line: #d8e4f2;
+      --success: #0f8a5f;
+      --warning: #c77700;
+      --shadow: 0 18px 50px rgba(7, 27, 58, 0.14);
+      --radius: 8px;
+      --max: 1160px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.94);
+      border-bottom: 1px solid rgba(216, 228, 242, 0.85);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      color: var(--white);
+      background: var(--blue-700);
+      border-radius: 8px;
+      font-weight: 800;
+      box-shadow: 0 8px 22px rgba(28, 110, 214, 0.26);
+    }
+
+    .brand-text {
+      display: grid;
+      line-height: 1.1;
+    }
+
+    .brand-name {
+      font-size: 1.02rem;
+      font-weight: 800;
+      color: var(--blue-950);
+      white-space: nowrap;
+    }
+
+    .brand-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 3px;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: #344761;
+      font-size: 0.94rem;
+      font-weight: 650;
+    }
+
+    .nav-links a:hover {
+      color: var(--blue-700);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .lang-toggle {
+      display: inline-grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 4px;
+      gap: 4px;
+      background: var(--blue-100);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+    }
+
+    .lang-btn {
+      min-width: 42px;
+      border: 0;
+      border-radius: 999px;
+      padding: 7px 10px;
+      color: var(--blue-900);
+      background: transparent;
+      cursor: pointer;
+      font-size: 0.83rem;
+      font-weight: 800;
+    }
+
+    .lang-btn.active {
+      color: var(--white);
+      background: var(--blue-700);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 46px;
+      padding: 12px 18px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      color: var(--white);
+      background: var(--blue-700);
+      box-shadow: 0 12px 28px rgba(28, 110, 214, 0.28);
+    }
+
+    .btn-primary:hover {
+      background: var(--blue-800);
+    }
+
+    .btn-secondary {
+      color: var(--blue-900);
+      background: var(--white);
+      border-color: rgba(255, 255, 255, 0.68);
+    }
+
+    .btn-outline {
+      color: var(--blue-800);
+      background: var(--white);
+      border-color: var(--line);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      color: var(--white);
+      background:
+        linear-gradient(118deg, rgba(7, 27, 58, 0.96) 0%, rgba(11, 44, 95, 0.9) 48%, rgba(28, 110, 214, 0.72) 100%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='900' viewBox='0 0 1600 900'%3E%3Crect width='1600' height='900' fill='%23d9e8f7'/%3E%3Cpath d='M0 520 L350 330 L700 520 L700 900 L0 900 Z' fill='%23ffffff' opacity='.74'/%3E%3Cpath d='M640 500 L1000 265 L1360 500 L1360 900 L640 900 Z' fill='%23f7fbff' opacity='.9'/%3E%3Cpath d='M970 280 L1160 155 L1350 280 Z' fill='%231758aa' opacity='.34'/%3E%3Crect x='790' y='555' width='120' height='110' rx='4' fill='%231758aa' opacity='.22'/%3E%3Crect x='1090' y='555' width='120' height='110' rx='4' fill='%231758aa' opacity='.22'/%3E%3Cpath d='M1210 610 C1320 545 1455 580 1600 500 L1600 900 L1210 900 Z' fill='%23cce0f4' opacity='.75'/%3E%3C/svg%3E");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero .container {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 420px;
+      gap: 42px;
+      align-items: center;
+      min-height: 690px;
+      padding: 70px 0 86px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      width: fit-content;
+      padding: 8px 12px;
+      color: #dcecff;
+      background: rgba(255, 255, 255, 0.11);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 999px;
+      font-size: 0.86rem;
+      font-weight: 800;
+    }
+
+    .hero h1 {
+      margin: 20px 0 18px;
+      max-width: 760px;
+      font-size: clamp(2.55rem, 6vw, 4.9rem);
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+
+    .hero-copy {
+      max-width: 650px;
+      margin: 0;
+      color: #d9e8fb;
+      font-size: clamp(1.05rem, 2vw, 1.22rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .trust-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      max-width: 660px;
+      margin-top: 38px;
+    }
+
+    .trust-item {
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: var(--radius);
+    }
+
+    .trust-item strong {
+      display: block;
+      font-size: 1.32rem;
+      line-height: 1.1;
+    }
+
+    .trust-item span {
+      display: block;
+      margin-top: 5px;
+      color: #dcecff;
+      font-size: 0.88rem;
+    }
+
+    .quick-card {
+      color: var(--ink);
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 26px;
+    }
+
+    .quick-card h2 {
+      margin: 0 0 8px;
+      color: var(--blue-950);
+      font-size: 1.42rem;
+      line-height: 1.18;
+    }
+
+    .quick-card p {
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .mini-form {
+      display: grid;
+      gap: 13px;
+    }
+
+    .field {
+      display: grid;
+      gap: 7px;
+    }
+
+    label {
+      color: #263a55;
+      font-size: 0.88rem;
+      font-weight: 800;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 13px;
+      color: var(--ink);
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      outline: none;
+      transition: border 150ms ease, box-shadow 150ms ease;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--blue-600);
+      box-shadow: 0 0 0 4px rgba(28, 110, 214, 0.14);
+    }
+
+    section {
+      padding: 86px 0;
+    }
+
+    .section-light {
+      background: var(--blue-50);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 28px;
+      margin-bottom: 30px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      color: var(--blue-950);
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.06;
+      letter-spacing: 0;
+    }
+
+    .section-head p {
+      max-width: 550px;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .calculator {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 390px;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .panel {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 12px 34px rgba(7, 27, 58, 0.08);
+    }
+
+    .calc-fields {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      padding: 26px;
+    }
+
+    .result-panel {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 22px;
+      padding: 26px;
+      color: var(--white);
+      background: var(--blue-900);
+      border-color: var(--blue-900);
+    }
+
+    .result-kicker {
+      margin: 0 0 8px;
+      color: #b9d9ff;
+      font-size: 0.86rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .result-number {
+      margin: 0;
+      font-size: clamp(2.4rem, 6vw, 3.4rem);
+      line-height: 1;
+      font-weight: 900;
+    }
+
+    .result-meta {
+      display: grid;
+      gap: 11px;
+      margin-top: 24px;
+    }
+
+    .result-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+      color: #dcecff;
+      font-size: 0.94rem;
+    }
+
+    .result-line strong {
+      color: var(--white);
+      text-align: right;
+    }
+
+    .result-note {
+      margin: 0;
+      color: #c8dcf5;
+      font-size: 0.88rem;
+    }
+
+    .steps-grid,
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .step,
+    .review {
+      padding: 24px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 28px rgba(7, 27, 58, 0.07);
+    }
+
+    .icon-box {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      color: var(--blue-900);
+      background: var(--blue-100);
+      border-radius: 8px;
+      font-weight: 900;
+    }
+
+    .step h3,
+    .review h3 {
+      margin: 0 0 8px;
+      color: var(--blue-950);
+      font-size: 1.12rem;
+    }
+
+    .step p,
+    .review p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .about-wrap {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .portrait {
+      min-height: 430px;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background:
+        linear-gradient(145deg, rgba(11, 44, 95, 0.84), rgba(28, 110, 214, 0.5)),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='760' viewBox='0 0 700 760'%3E%3Crect width='700' height='760' fill='%23eef6ff'/%3E%3Ccircle cx='350' cy='225' r='106' fill='%23b9d2ec'/%3E%3Cpath d='M165 760 C174 512 255 384 350 384 C445 384 526 512 535 760 Z' fill='%23123f7c'/%3E%3Cpath d='M225 760 C242 588 285 455 350 455 C415 455 458 588 475 760 Z' fill='%23ffffff' opacity='.92'/%3E%3Cpath d='M95 120 C180 30 280 12 385 60 C515 118 565 250 628 350 L628 0 L95 0 Z' fill='%231c6ed6' opacity='.2'/%3E%3C/svg%3E");
+      background-size: cover;
+      background-position: center;
+      box-shadow: var(--shadow);
+    }
+
+    .about-content h2 {
+      margin: 0 0 18px;
+      color: var(--blue-950);
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.06;
+    }
+
+    .about-content p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 1.03rem;
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 26px 0 30px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .feature-list li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      color: #263a55;
+      font-weight: 700;
+    }
+
+    .check {
+      width: 22px;
+      height: 22px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      color: var(--white);
+      background: var(--success);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      line-height: 1;
+    }
+
+    .stars {
+      color: var(--warning);
+      font-size: 1.08rem;
+      margin-bottom: 12px;
+    }
+
+    .review cite {
+      display: block;
+      margin-top: 18px;
+      color: var(--blue-900);
+      font-style: normal;
+      font-weight: 900;
+    }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 0.86fr 1.14fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .contact-info {
+      padding: 30px;
+      color: var(--white);
+      background: var(--blue-900);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-info h2 {
+      margin: 0 0 14px;
+      font-size: clamp(2rem, 4vw, 2.7rem);
+      line-height: 1.06;
+    }
+
+    .contact-info p {
+      margin: 0 0 24px;
+      color: #dcecff;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 15px;
+      margin: 0 0 30px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .contact-list li {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      color: #edf6ff;
+      font-weight: 750;
+    }
+
+    .lead-form {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      padding: 30px;
+    }
+
+    .lead-form .full {
+      grid-column: 1 / -1;
+    }
+
+    textarea {
+      min-height: 116px;
+      resize: vertical;
+    }
+
+    .form-status {
+      min-height: 24px;
+      margin: 0;
+      color: var(--success);
+      font-weight: 800;
+    }
+
+    .cta-band {
+      padding: 52px 0;
+      color: var(--white);
+      background: var(--blue-800);
+    }
+
+    .cta-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .cta-inner h2 {
+      margin: 0 0 8px;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      line-height: 1.08;
+    }
+
+    .cta-inner p {
+      margin: 0;
+      color: #dcecff;
+      max-width: 620px;
+    }
+
+    footer {
+      padding: 30px 0;
+      color: #dcecff;
+      background: var(--blue-950);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      font-size: 0.92rem;
+    }
+
+    .footer-inner a {
+      font-weight: 800;
+      color: var(--white);
+    }
+
+    [data-i18n] {
+      transition: opacity 120ms ease;
+    }
+
+    @media (max-width: 980px) {
+      .nav {
+        flex-wrap: wrap;
+        padding: 14px 0;
+      }
+
+      .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        gap: 18px;
+      }
+
+      .hero .container,
+      .calculator,
+      .about-wrap,
+      .contact-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .hero .container {
+        min-height: auto;
+        padding: 58px 0 68px;
+      }
+
+      .quick-card {
+        max-width: 560px;
+      }
+
+      .section-head {
+        display: grid;
+      }
+
+      .steps-grid,
+      .reviews-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .portrait {
+        min-height: 360px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .topbar {
+        position: static;
+      }
+
+      .nav {
+        align-items: stretch;
+      }
+
+      .brand-sub,
+      .nav-links {
+        display: none;
+      }
+
+      .nav-actions {
+        margin-left: auto;
+      }
+
+      .nav-actions .btn {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.3rem, 13vw, 3.7rem);
+      }
+
+      .hero-actions,
+      .cta-inner,
+      .footer-inner {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+        white-space: normal;
+      }
+
+      .trust-row,
+      .calc-fields,
+      .steps-grid,
+      .reviews-grid,
+      .feature-list,
+      .lead-form {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 64px 0;
+      }
+
+      .quick-card,
+      .calc-fields,
+      .result-panel,
+      .step,
+      .review,
+      .contact-info,
+      .lead-form {
+        padding: 22px;
+      }
+
+      .lead-form .full {
+        grid-column: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="Qualify With Alex home">
+        <span class="brand-mark">QA</span>
+        <span class="brand-text">
+          <span class="brand-name">QualifyWithAlex.com</span>
+          <span class="brand-sub" data-i18n="brandSub">Mortgage guidance made clear</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="Page sections">
+        <a href="#calculator" data-i18n="navCalculator">Calculator</a>
+        <a href="#about" data-i18n="navAbout">About Alex</a>
+        <a href="#reviews" data-i18n="navReviews">Reviews</a>
+        <a href="#contact" data-i18n="navContact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <div class="lang-toggle" aria-label="Language toggle">
+          <button class="lang-btn active" type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button class="lang-btn" type="button" data-lang="es" aria-pressed="false">ES</button>
+        </div>
+        <a class="btn btn-primary" href="#contact" data-i18n="navCta">Get Pre-Qualified</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div>
+          <span class="eyebrow" data-i18n="heroEyebrow">Mortgage affordability, made simple</span>
+          <h1 data-i18n="heroHeadline">Find Out How Much Home You Can Afford</h1>
+          <p class="hero-copy" data-i18n="heroCopy">Start with a fast estimate, then connect with Alex for a clear loan strategy built around your income, monthly debts, down payment, and credit profile.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#calculator" data-i18n="heroPrimary">Calculate My Budget</a>
+            <a class="btn btn-secondary" href="#contact" data-i18n="heroSecondary">Talk With Alex</a>
+          </div>
+          <div class="trust-row" aria-label="Highlights">
+            <div class="trust-item">
+              <strong data-i18n="trustOneValue">Fast</strong>
+              <span data-i18n="trustOneLabel">home affordability estimate</span>
+            </div>
+            <div class="trust-item">
+              <strong data-i18n="trustTwoValue">Clear</strong>
+              <span data-i18n="trustTwoLabel">next steps for buyers</span>
+            </div>
+            <div class="trust-item">
+              <strong data-i18n="trustThreeValue">1:1</strong>
+              <span data-i18n="trustThreeLabel">mortgage guidance</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="quick-card" aria-label="Lead capture">
+          <h2 data-i18n="quickTitle">Ready to see your options?</h2>
+          <p data-i18n="quickCopy">Share your details and Alex will help you understand your buying power.</p>
+          <form class="mini-form lead-capture">
+            <div class="field">
+              <label for="quick-name" data-i18n="labelName">Name</label>
+              <input id="quick-name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="quick-phone" data-i18n="labelPhone">Phone</label>
+              <input id="quick-phone" name="phone" type="tel" autocomplete="tel" required>
+            </div>
+            <div class="field">
+              <label for="quick-email" data-i18n="labelEmail">Email</label>
+              <input id="quick-email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <button class="btn btn-primary" type="submit" data-i18n="quickButton">Request My Estimate</button>
+            <p class="form-status" aria-live="polite"></p>
+          </form>
+        </aside>
+      </div>
+    </section>
+
+    <section id="calculator" class="section-light">
+      <div class="container">
+        <div class="section-head">
+          <h2 data-i18n="calcTitle">Affordability Calculator</h2>
+          <p data-i18n="calcIntro">Use this quick estimate to understand a realistic purchase range. Final approval depends on full underwriting, loan program, interest rate, taxes, insurance, and property details.</p>
+        </div>
+
+        <div class="calculator">
+          <div class="panel calc-fields">
+            <div class="field">
+              <label for="income" data-i18n="labelIncome">Annual Income</label>
+              <input id="income" type="number" min="0" step="1000" value="95000" inputmode="decimal">
+            </div>
+            <div class="field">
+              <label for="debt" data-i18n="labelDebt">Monthly Debt</label>
+              <input id="debt" type="number" min="0" step="50" value="650" inputmode="decimal">
+            </div>
+            <div class="field">
+              <label for="down" data-i18n="labelDown">Down Payment</label>
+              <input id="down" type="number" min="0" step="1000" value="40000" inputmode="decimal">
+            </div>
+            <div class="field">
+              <label for="credit" data-i18n="labelCredit">Credit Score Range</label>
+              <select id="credit">
+                <option value="0.0725">760+</option>
+                <option value="0.075" selected>700 - 759</option>
+                <option value="0.0785">660 - 699</option>
+                <option value="0.0825">620 - 659</option>
+                <option value="0.0875">580 - 619</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="taxes" data-i18n="labelTaxes">Estimated Monthly Taxes & Insurance</label>
+              <input id="taxes" type="number" min="0" step="50" value="650" inputmode="decimal">
+            </div>
+            <div class="field">
+              <label for="term" data-i18n="labelTerm">Loan Term</label>
+              <select id="term">
+                <option value="30" selected data-i18n="termThirty">30 years</option>
+                <option value="20" data-i18n="termTwenty">20 years</option>
+                <option value="15" data-i18n="termFifteen">15 years</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="panel result-panel">
+            <div>
+              <p class="result-kicker" data-i18n="resultKicker">Estimated home budget</p>
+              <p class="result-number" id="homeBudget">$0</p>
+              <div class="result-meta">
+                <div class="result-line">
+                  <span data-i18n="resultPayment">Estimated monthly payment</span>
+                  <strong id="monthlyPayment">$0</strong>
+                </div>
+                <div class="result-line">
+                  <span data-i18n="resultLoan">Estimated loan amount</span>
+                  <strong id="loanAmount">$0</strong>
+                </div>
+                <div class="result-line">
+                  <span data-i18n="resultRate">Rate used for estimate</span>
+                  <strong id="rateUsed">0%</strong>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p class="result-note" data-i18n="resultNote">This calculator is for planning only and is not a loan approval or commitment to lend.</p>
+              <a class="btn btn-secondary" href="#contact" data-i18n="resultCta">Get a Personalized Review</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <h2 data-i18n="processTitle">A simple path to your next home</h2>
+          <p data-i18n="processIntro">From first estimate to confident offer, Alex helps you understand the numbers before you fall in love with a property.</p>
+        </div>
+        <div class="steps-grid">
+          <article class="step">
+            <div class="icon-box">1</div>
+            <h3 data-i18n="stepOneTitle">Estimate your budget</h3>
+            <p data-i18n="stepOneCopy">Use income, debt, down payment, and credit range to see a practical starting point.</p>
+          </article>
+          <article class="step">
+            <div class="icon-box">2</div>
+            <h3 data-i18n="stepTwoTitle">Review loan options</h3>
+            <p data-i18n="stepTwoCopy">Compare programs, monthly payment targets, and cash-to-close expectations.</p>
+          </article>
+          <article class="step">
+            <div class="icon-box">3</div>
+            <h3 data-i18n="stepThreeTitle">Shop with confidence</h3>
+            <p data-i18n="stepThreeCopy">Move forward with a clear plan and the documents you need to compete.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section-light">
+      <div class="container about-wrap">
+        <div class="portrait" role="img" aria-label="Professional portrait illustration of Alex"></div>
+        <div class="about-content">
+          <h2 data-i18n="aboutTitle">About Alex</h2>
+          <p data-i18n="aboutCopyOne">Alex helps homebuyers turn confusing mortgage numbers into a clear plan. Whether you are buying your first home, moving up, or preparing after a credit reset, you will get straightforward guidance in plain language.</p>
+          <p data-i18n="aboutCopyTwo">The goal is simple: help you understand what you can afford, what loan options may fit, and what steps can improve your approval path.</p>
+          <ul class="feature-list">
+            <li><span class="check">&check;</span><span data-i18n="featureOne">First-time buyer guidance</span></li>
+            <li><span class="check">&check;</span><span data-i18n="featureTwo">Bilingual support</span></li>
+            <li><span class="check">&check;</span><span data-i18n="featureThree">Refinance and purchase options</span></li>
+            <li><span class="check">&check;</span><span data-i18n="featureFour">Clear payment planning</span></li>
+          </ul>
+          <a class="btn btn-primary" href="#contact" data-i18n="aboutCta">Ask Alex a Question</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews">
+      <div class="container">
+        <div class="section-head">
+          <h2 data-i18n="reviewsTitle">What buyers appreciate</h2>
+          <p data-i18n="reviewsIntro">Helpful mortgage support should feel responsive, transparent, and easy to understand.</p>
+        </div>
+        <div class="reviews-grid">
+          <article class="review">
+            <div class="stars" aria-label="Five stars">&starf;&starf;&starf;&starf;&starf;</div>
+            <h3 data-i18n="reviewOneTitle">Clear from day one</h3>
+            <p data-i18n="reviewOneCopy">Alex explained the payment, the documents, and the timeline without pressure. We knew exactly what to expect.</p>
+            <cite data-i18n="reviewOneName">Maria R.</cite>
+          </article>
+          <article class="review">
+            <div class="stars" aria-label="Five stars">&starf;&starf;&starf;&starf;&starf;</div>
+            <h3 data-i18n="reviewTwoTitle">Fast answers</h3>
+            <p data-i18n="reviewTwoCopy">Every question was answered quickly. The numbers finally made sense before we started touring homes.</p>
+            <cite data-i18n="reviewTwoName">James T.</cite>
+          </article>
+          <article class="review">
+            <div class="stars" aria-label="Five stars">&starf;&starf;&starf;&starf;&starf;</div>
+            <h3 data-i18n="reviewThreeTitle">A real plan</h3>
+            <p data-i18n="reviewThreeCopy">We were not ready at first, but Alex showed us the exact steps to improve our buying position.</p>
+            <cite data-i18n="reviewThreeName">Sofia & Daniel</cite>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="container cta-inner">
+        <div>
+          <h2 data-i18n="bandTitle">Know your buying power before you shop.</h2>
+          <p data-i18n="bandCopy">Get a personalized estimate and a clear mortgage game plan from Alex.</p>
+        </div>
+        <a class="btn btn-secondary" href="#contact" data-i18n="bandCta">Start Now</a>
+      </div>
+    </section>
+
+    <section id="contact" class="section-light">
+      <div class="container contact-wrap">
+        <aside class="contact-info">
+          <h2 data-i18n="contactTitle">Contact Alex</h2>
+          <p data-i18n="contactCopy">Send your information and Alex will follow up to discuss affordability, pre-qualification, and your best next step.</p>
+          <ul class="contact-list">
+            <li><span class="check">&check;</span><span data-i18n="contactItemOne">Quick affordability review</span></li>
+            <li><span class="check">&check;</span><span data-i18n="contactItemTwo">English and Spanish support</span></li>
+            <li><span class="check">&check;</span><span data-i18n="contactItemThree">No-obligation conversation</span></li>
+          </ul>
+          <a class="btn btn-secondary" href="tel:+15551234567" data-i18n="contactCall">Call Alex</a>
+        </aside>
+
+        <form class="panel lead-form lead-capture">
+          <div class="field">
+            <label for="name" data-i18n="labelName">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="phone" data-i18n="labelPhone">Phone</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" required>
+          </div>
+          <div class="field full">
+            <label for="email" data-i18n="labelEmail">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field full">
+            <label for="message" data-i18n="labelMessage">What can Alex help with?</label>
+            <textarea id="message" name="message" data-i18n-placeholder="messagePlaceholder" placeholder="I want to know how much home I can afford."></textarea>
+          </div>
+          <div class="full">
+            <button class="btn btn-primary" type="submit" data-i18n="contactButton">Send My Info</button>
+          </div>
+          <p class="form-status full" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span data-i18n="footerCopy">&copy; 2026 QualifyWithAlex.com. Mortgage information for planning purposes only.</span>
+      <a href="#top" data-i18n="footerTop">Back to top</a>
+    </div>
+  </footer>
+
+  <script>
+    const translations = {
+      en: {
+        brandSub: "Mortgage guidance made clear",
+        navCalculator: "Calculator",
+        navAbout: "About Alex",
+        navReviews: "Reviews",
+        navContact: "Contact",
+        navCta: "Get Pre-Qualified",
+        heroEyebrow: "Mortgage affordability, made simple",
+        heroHeadline: "Find Out How Much Home You Can Afford",
+        heroCopy: "Start with a fast estimate, then connect with Alex for a clear loan strategy built around your income, monthly debts, down payment, and credit profile.",
+        heroPrimary: "Calculate My Budget",
+        heroSecondary: "Talk With Alex",
+        trustOneValue: "Fast",
+        trustOneLabel: "home affordability estimate",
+        trustTwoValue: "Clear",
+        trustTwoLabel: "next steps for buyers",
+        trustThreeValue: "1:1",
+        trustThreeLabel: "mortgage guidance",
+        quickTitle: "Ready to see your options?",
+        quickCopy: "Share your details and Alex will help you understand your buying power.",
+        quickButton: "Request My Estimate",
+        labelName: "Name",
+        labelPhone: "Phone",
+        labelEmail: "Email",
+        labelIncome: "Annual Income",
+        labelDebt: "Monthly Debt",
+        labelDown: "Down Payment",
+        labelCredit: "Credit Score Range",
+        labelTaxes: "Estimated Monthly Taxes & Insurance",
+        labelTerm: "Loan Term",
+        termThirty: "30 years",
+        termTwenty: "20 years",
+        termFifteen: "15 years",
+        calcTitle: "Affordability Calculator",
+        calcIntro: "Use this quick estimate to understand a realistic purchase range. Final approval depends on full underwriting, loan program, interest rate, taxes, insurance, and property details.",
+        resultKicker: "Estimated home budget",
+        resultPayment: "Estimated monthly payment",
+        resultLoan: "Estimated loan amount",
+        resultRate: "Rate used for estimate",
+        resultNote: "This calculator is for planning only and is not a loan approval or commitment to lend.",
+        resultCta: "Get a Personalized Review",
+        processTitle: "A simple path to your next home",
+        processIntro: "From first estimate to confident offer, Alex helps you understand the numbers before you fall in love with a property.",
+        stepOneTitle: "Estimate your budget",
+        stepOneCopy: "Use income, debt, down payment, and credit range to see a practical starting point.",
+        stepTwoTitle: "Review loan options",
+        stepTwoCopy: "Compare programs, monthly payment targets, and cash-to-close expectations.",
+        stepThreeTitle: "Shop with confidence",
+        stepThreeCopy: "Move forward with a clear plan and the documents you need to compete.",
+        aboutTitle: "About Alex",
+        aboutCopyOne: "Alex helps homebuyers turn confusing mortgage numbers into a clear plan. Whether you are buying your first home, moving up, or preparing after a credit reset, you will get straightforward guidance in plain language.",
+        aboutCopyTwo: "The goal is simple: help you understand what you can afford, what loan options may fit, and what steps can improve your approval path.",
+        featureOne: "First-time buyer guidance",
+        featureTwo: "Bilingual support",
+        featureThree: "Refinance and purchase options",
+        featureFour: "Clear payment planning",
+        aboutCta: "Ask Alex a Question",
+        reviewsTitle: "What buyers appreciate",
+        reviewsIntro: "Helpful mortgage support should feel responsive, transparent, and easy to understand.",
+        reviewOneTitle: "Clear from day one",
+        reviewOneCopy: "Alex explained the payment, the documents, and the timeline without pressure. We knew exactly what to expect.",
+        reviewOneName: "Maria R.",
+        reviewTwoTitle: "Fast answers",
+        reviewTwoCopy: "Every question was answered quickly. The numbers finally made sense before we started touring homes.",
+        reviewTwoName: "James T.",
+        reviewThreeTitle: "A real plan",
+        reviewThreeCopy: "We were not ready at first, but Alex showed us the exact steps to improve our buying position.",
+        reviewThreeName: "Sofia & Daniel",
+        bandTitle: "Know your buying power before you shop.",
+        bandCopy: "Get a personalized estimate and a clear mortgage game plan from Alex.",
+        bandCta: "Start Now",
+        contactTitle: "Contact Alex",
+        contactCopy: "Send your information and Alex will follow up to discuss affordability, pre-qualification, and your best next step.",
+        contactItemOne: "Quick affordability review",
+        contactItemTwo: "English and Spanish support",
+        contactItemThree: "No-obligation conversation",
+        contactCall: "Call Alex",
+        labelMessage: "What can Alex help with?",
+        messagePlaceholder: "I want to know how much home I can afford.",
+        contactButton: "Send My Info",
+        formSuccess: "Thanks. Your information is ready for Alex to review.",
+        footerCopy: "\u00a9 2026 QualifyWithAlex.com. Mortgage information for planning purposes only.",
+        footerTop: "Back to top"
+      },
+      es: {
+        brandSub: "Guia hipotecaria clara",
+        navCalculator: "Calculadora",
+        navAbout: "Sobre Alex",
+        navReviews: "Resenas",
+        navContact: "Contacto",
+        navCta: "Precalificarme",
+        heroEyebrow: "Capacidad de compra, facil de entender",
+        heroHeadline: "Descubra Cuanta Casa Puede Comprar",
+        heroCopy: "Comience con un estimado rapido y conecte con Alex para una estrategia hipotecaria basada en sus ingresos, deudas mensuales, pago inicial y perfil de credito.",
+        heroPrimary: "Calcular Mi Presupuesto",
+        heroSecondary: "Hablar Con Alex",
+        trustOneValue: "Rapido",
+        trustOneLabel: "estimado de compra",
+        trustTwoValue: "Claro",
+        trustTwoLabel: "siguientes pasos para compradores",
+        trustThreeValue: "1:1",
+        trustThreeLabel: "guia hipotecaria",
+        quickTitle: "Listo para ver sus opciones?",
+        quickCopy: "Comparta sus datos y Alex le ayudara a entender su poder de compra.",
+        quickButton: "Solicitar Mi Estimado",
+        labelName: "Nombre",
+        labelPhone: "Telefono",
+        labelEmail: "Correo electronico",
+        labelIncome: "Ingreso Anual",
+        labelDebt: "Deuda Mensual",
+        labelDown: "Pago Inicial",
+        labelCredit: "Rango de Puntaje de Credito",
+        labelTaxes: "Impuestos y Seguro Mensuales Estimados",
+        labelTerm: "Plazo del Prestamo",
+        termThirty: "30 anos",
+        termTwenty: "20 anos",
+        termFifteen: "15 anos",
+        calcTitle: "Calculadora de Compra",
+        calcIntro: "Use este estimado rapido para entender un rango de compra realista. La aprobacion final depende de la revision completa, programa, tasa, impuestos, seguro y detalles de la propiedad.",
+        resultKicker: "Presupuesto estimado",
+        resultPayment: "Pago mensual estimado",
+        resultLoan: "Monto estimado del prestamo",
+        resultRate: "Tasa usada para el estimado",
+        resultNote: "Esta calculadora es solo para planificacion y no es una aprobacion ni compromiso de prestamo.",
+        resultCta: "Recibir Revision Personalizada",
+        processTitle: "Un camino simple a su proxima casa",
+        processIntro: "Desde el primer estimado hasta una oferta con confianza, Alex le ayuda a entender los numeros antes de enamorarse de una propiedad.",
+        stepOneTitle: "Estime su presupuesto",
+        stepOneCopy: "Use ingresos, deudas, pago inicial y credito para ver un punto de partida practico.",
+        stepTwoTitle: "Revise opciones de prestamo",
+        stepTwoCopy: "Compare programas, pagos mensuales y costos estimados para cerrar.",
+        stepThreeTitle: "Compre con confianza",
+        stepThreeCopy: "Avance con un plan claro y los documentos necesarios para competir.",
+        aboutTitle: "Sobre Alex",
+        aboutCopyOne: "Alex ayuda a compradores a convertir numeros hipotecarios confusos en un plan claro. Ya sea su primera casa, una mudanza o una preparacion despues de cambios en credito, recibira guia directa y facil de entender.",
+        aboutCopyTwo: "La meta es simple: ayudarle a entender cuanto puede comprar, que opciones pueden funcionar y que pasos pueden mejorar su camino a la aprobacion.",
+        featureOne: "Guia para primeros compradores",
+        featureTwo: "Apoyo bilingue",
+        featureThree: "Opciones de compra y refinanciamiento",
+        featureFour: "Planificacion clara de pagos",
+        aboutCta: "Hacer una Pregunta a Alex",
+        reviewsTitle: "Lo que compradores valoran",
+        reviewsIntro: "El apoyo hipotecario debe sentirse rapido, transparente y facil de entender.",
+        reviewOneTitle: "Claro desde el primer dia",
+        reviewOneCopy: "Alex explico el pago, los documentos y el proceso sin presion. Supimos exactamente que esperar.",
+        reviewOneName: "Maria R.",
+        reviewTwoTitle: "Respuestas rapidas",
+        reviewTwoCopy: "Cada pregunta fue respondida rapido. Los numeros por fin tuvieron sentido antes de ver casas.",
+        reviewTwoName: "James T.",
+        reviewThreeTitle: "Un plan real",
+        reviewThreeCopy: "No estabamos listos al principio, pero Alex nos mostro los pasos exactos para mejorar nuestra posicion.",
+        reviewThreeName: "Sofia y Daniel",
+        bandTitle: "Conozca su poder de compra antes de buscar.",
+        bandCopy: "Reciba un estimado personalizado y un plan hipotecario claro de Alex.",
+        bandCta: "Comenzar Ahora",
+        contactTitle: "Contactar a Alex",
+        contactCopy: "Envie su informacion y Alex le contactara para hablar sobre capacidad de compra, precalificacion y su mejor siguiente paso.",
+        contactItemOne: "Revision rapida de compra",
+        contactItemTwo: "Apoyo en ingles y espanol",
+        contactItemThree: "Conversacion sin obligacion",
+        contactCall: "Llamar a Alex",
+        labelMessage: "En que puede ayudar Alex?",
+        messagePlaceholder: "Quiero saber cuanta casa puedo comprar.",
+        contactButton: "Enviar Mi Informacion",
+        formSuccess: "Gracias. Su informacion esta lista para que Alex la revise.",
+        footerCopy: "\u00a9 2026 QualifyWithAlex.com. Informacion hipotecaria solo para planificacion.",
+        footerTop: "Volver arriba"
+      }
+    };
+
+    const currency = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      maximumFractionDigits: 0
+    });
+
+    const fields = {
+      income: document.getElementById("income"),
+      debt: document.getElementById("debt"),
+      down: document.getElementById("down"),
+      credit: document.getElementById("credit"),
+      taxes: document.getElementById("taxes"),
+      term: document.getElementById("term")
+    };
+
+    const outputs = {
+      homeBudget: document.getElementById("homeBudget"),
+      monthlyPayment: document.getElementById("monthlyPayment"),
+      loanAmount: document.getElementById("loanAmount"),
+      rateUsed: document.getElementById("rateUsed")
+    };
+
+    function readNumber(input) {
+      return Number.parseFloat(input.value) || 0;
+    }
+
+    function calculateAffordability() {
+      const annualIncome = readNumber(fields.income);
+      const monthlyDebt = readNumber(fields.debt);
+      const downPayment = readNumber(fields.down);
+      const monthlyTaxesInsurance = readNumber(fields.taxes);
+      const annualRate = Number.parseFloat(fields.credit.value);
+      const years = Number.parseInt(fields.term.value, 10);
+      const maxDebtToIncome = 0.43;
+      const monthlyIncome = annualIncome / 12;
+      const maxTotalDebt = monthlyIncome * maxDebtToIncome;
+      const availableForMortgage = Math.max(maxTotalDebt - monthlyDebt - monthlyTaxesInsurance, 0);
+      const monthlyRate = annualRate / 12;
+      const months = years * 12;
+      const principal = monthlyRate > 0
+        ? availableForMortgage * ((1 - Math.pow(1 + monthlyRate, -months)) / monthlyRate)
+        : availableForMortgage * months;
+      const estimatedLoan = Math.max(principal, 0);
+      const estimatedHomePrice = estimatedLoan + downPayment;
+
+      outputs.homeBudget.textContent = currency.format(estimatedHomePrice);
+      outputs.monthlyPayment.textContent = currency.format(availableForMortgage + monthlyTaxesInsurance);
+      outputs.loanAmount.textContent = currency.format(estimatedLoan);
+      outputs.rateUsed.textContent = `${(annualRate * 100).toFixed(2)}%`;
+    }
+
+    function setLanguage(lang) {
+      const dictionary = translations[lang] || translations.en;
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll("[data-i18n]").forEach((node) => {
+        const key = node.dataset.i18n;
+        if (dictionary[key]) {
+          node.textContent = dictionary[key];
+        }
+      });
+
+      document.querySelectorAll("[data-i18n-placeholder]").forEach((node) => {
+        const key = node.dataset.i18nPlaceholder;
+        if (dictionary[key]) {
+          node.setAttribute("placeholder", dictionary[key]);
+        }
+      });
+
+      document.querySelectorAll(".lang-btn").forEach((button) => {
+        const active = button.dataset.lang === lang;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+    }
+
+    Object.values(fields).forEach((field) => {
+      field.addEventListener("input", calculateAffordability);
+      field.addEventListener("change", calculateAffordability);
+    });
+
+    document.querySelectorAll(".lang-btn").forEach((button) => {
+      button.addEventListener("click", () => setLanguage(button.dataset.lang));
+    });
+
+    document.querySelectorAll(".lead-capture").forEach((form) => {
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const status = form.querySelector(".form-status");
+        const lang = document.documentElement.lang || "en";
+        if (status) {
+          status.textContent = translations[lang].formSuccess;
+        }
+        form.reset();
+      });
+    });
+
+    calculateAffordability();
+  </script>
+</body>
+</html>
