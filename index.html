@@ -848,7 +848,12 @@
         <aside class="quick-card" aria-label="Lead capture">
           <h2 data-i18n="quickTitle">Ready to see your options?</h2>
           <p data-i18n="quickCopy">Share your details and Alex will help you understand your buying power.</p>
-          <form class="mini-form lead-capture">
+          <form class="mini-form lead-capture" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value=c8888f52-e618-4520-9042-203286175b4a>
+
+            <input type="hidden" name="subject" value="New Lead from Top Form - QualifyWithAlex.com">
+
+            <input type="hidden" name="from_name" value="QualifyWithAlex Website">
             <div class="field">
               <label for="quick-name" data-i18n="labelName">Name</label>
               <input id="quick-name" name="name" type="text" autocomplete="name" required>
