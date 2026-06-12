@@ -1334,18 +1334,6 @@
       button.addEventListener("click", () => setLanguage(button.dataset.lang));
     });
 
-    document.querySelectorAll(".lead-capture").forEach((form) => {
-      form.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const status = form.querySelector(".form-status");
-        const lang = document.documentElement.lang || "en";
-        if (status) {
-          status.textContent = translations[lang].formSuccess;
-        }
-        form.reset();
-      });
-    });
-
     calculateAffordability();
   </script>
 </body>
