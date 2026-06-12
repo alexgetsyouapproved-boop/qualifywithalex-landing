@@ -1037,7 +1037,14 @@
           <a class="btn btn-secondary" href="tel:+15551234567" data-i18n="contactCall">Call Alex</a>
         </aside>
 
-        <form class="panel lead-form lead-capture">
+        <form class="panel lead-form lead-capture" action="https://api.web3forms.com/submit" method="POST">
+          
+          <input type="hidden" name="access_key" value=c8888f52-e618-4520-9042-203286175b4a>
+
+          <input type="hidden" name="subject" value="New Lead from QualifyWithAlex.com">
+
+          <input type="hidden" name="from_name" value="QualifyWithAlex Website">
+          
           <div class="field">
             <label for="name" data-i18n="labelName">Name</label>
             <input id="name" name="name" type="text" autocomplete="name" required>
