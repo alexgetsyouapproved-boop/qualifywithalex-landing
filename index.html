@@ -3,26 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Find out how much home you can afford with Alex. Mortgage affordability calculator and home loan guidance.">
-  <title>Qualify With Alex | Mortgage Affordability</title>
+  <meta name="description" content="Get pre-approved with Alex Marroquin at Magistrelli Mortgages. Mortgage guidance, loan programs, affordability calculator, and bilingual support.">
+  <title>Alex Marroquin | Magistrelli Mortgages</title>
   <style>
     :root {
-      --blue-950: #071b3a;
-      --blue-900: #0b2c5f;
-      --blue-800: #123f7c;
-      --blue-700: #1758aa;
-      --blue-600: #1c6ed6;
-      --blue-100: #e9f3ff;
-      --blue-50: #f5faff;
-      --white: #ffffff;
-      --ink: #122033;
-      --muted: #5f6f86;
-      --line: #d8e4f2;
-      --success: #0f8a5f;
-      --warning: #c77700;
-      --shadow: 0 18px 50px rgba(7, 27, 58, 0.14);
-      --radius: 8px;
-      --max: 1160px;
+      --navy: #22366f;
+      --navy-dark: #07183a;
+      --red: #df1738;
+      --gold: #c99306;
+      --gold-soft: #fff4d6;
+      --ink: #111827;
+      --muted: #667085;
+      --line: #e4e7ec;
+      --paper: #ffffff;
+      --soft: #f7f8fb;
+      --shadow: 0 24px 70px rgba(7, 24, 58, 0.12);
+      --radius: 18px;
+      --max: 1180px;
     }
 
     * {
@@ -35,10 +32,10 @@
 
     body {
       margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--ink);
-      background: var(--white);
-      line-height: 1.55;
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
     }
 
     a {
@@ -62,9 +59,9 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(255, 255, 255, 0.94);
-      border-bottom: 1px solid rgba(216, 228, 242, 0.85);
-      backdrop-filter: blur(14px);
+      background: rgba(255, 255, 255, 0.9);
+      border-bottom: 1px solid rgba(228, 231, 236, 0.9);
+      backdrop-filter: saturate(180%) blur(18px);
     }
 
     .nav {
@@ -75,42 +72,24 @@
       gap: 22px;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 0;
-    }
-
-    .brand-mark {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      flex: 0 0 auto;
-      color: var(--white);
-      background: var(--blue-700);
-      border-radius: 8px;
-      font-weight: 800;
-      box-shadow: 0 8px 22px rgba(28, 110, 214, 0.26);
-    }
-
     .brand-text {
       display: grid;
-      line-height: 1.1;
+      gap: 2px;
+      line-height: 1.05;
     }
 
     .brand-name {
+      color: var(--navy-dark);
       font-size: 1.02rem;
-      font-weight: 800;
-      color: var(--blue-950);
+      font-weight: 950;
+      letter-spacing: 0;
       white-space: nowrap;
     }
 
     .brand-sub {
-      font-size: 0.8rem;
       color: var(--muted);
-      margin-top: 3px;
+      font-size: 0.78rem;
+      font-weight: 800;
       white-space: nowrap;
     }
 
@@ -118,13 +97,31 @@
       display: flex;
       align-items: center;
       gap: 22px;
-      color: #344761;
-      font-size: 0.94rem;
+      color: #344054;
+      font-size: 0.93rem;
       font-weight: 650;
     }
 
-    .nav-links a:hover {
-      color: var(--blue-700);
+    .nav-links a {
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: -10px;
+      left: 0;
+      height: 2px;
+      background: var(--gold);
+      opacity: 0;
+      transform: scaleX(0.35);
+      transition: opacity 160ms ease, transform 160ms ease;
+    }
+
+    .nav-links a:hover::after {
+      opacity: 1;
+      transform: scaleX(1);
     }
 
     .nav-actions {
@@ -136,28 +133,51 @@
     .lang-toggle {
       display: inline-grid;
       grid-template-columns: 1fr 1fr;
-      padding: 4px;
-      gap: 4px;
-      background: var(--blue-100);
+      gap: 3px;
+      padding: 3px;
+      background: #f1f3f7;
       border: 1px solid var(--line);
       border-radius: 999px;
     }
 
     .lang-btn {
-      min-width: 42px;
+      min-width: 74px;
       border: 0;
       border-radius: 999px;
-      padding: 7px 10px;
-      color: var(--blue-900);
+      padding: 7px 11px;
+      color: #344054;
       background: transparent;
       cursor: pointer;
-      font-size: 0.83rem;
-      font-weight: 800;
+      font-size: 0.82rem;
+      font-weight: 750;
     }
 
     .lang-btn.active {
-      color: var(--white);
-      background: var(--blue-700);
+      color: #ffffff;
+      background: var(--navy);
+    }
+
+    .menu-btn {
+      display: none;
+      width: 42px;
+      height: 42px;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      color: var(--navy);
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      cursor: pointer;
+    }
+
+    .menu-btn svg {
+      width: 21px;
+      height: 21px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
     }
 
     .btn {
@@ -167,88 +187,106 @@
       gap: 9px;
       min-height: 46px;
       padding: 12px 18px;
-      border: 1px solid transparent;
-      border-radius: 8px;
+      color: #ffffff;
+      background: var(--navy);
+      border: 1px solid var(--navy);
+      border-radius: 999px;
       font-weight: 800;
-      cursor: pointer;
-      transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
       text-align: center;
       white-space: nowrap;
+      cursor: pointer;
+      transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
     }
 
     .btn:hover {
       transform: translateY(-1px);
+      background: var(--navy-dark);
+      box-shadow: 0 14px 32px rgba(34, 54, 111, 0.2);
     }
 
-    .btn-primary {
-      color: var(--white);
-      background: var(--blue-700);
-      box-shadow: 0 12px 28px rgba(28, 110, 214, 0.28);
+    .btn-gold {
+      color: var(--navy-dark);
+      background: var(--gold);
+      border-color: var(--gold);
     }
 
-    .btn-primary:hover {
-      background: var(--blue-800);
-    }
-
-    .btn-secondary {
-      color: var(--blue-900);
-      background: var(--white);
-      border-color: rgba(255, 255, 255, 0.68);
+    .btn-gold:hover {
+      color: var(--navy-dark);
+      background: #b88705;
     }
 
     .btn-outline {
-      color: var(--blue-800);
-      background: var(--white);
-      border-color: var(--line);
-    }
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      color: var(--white);
-      background:
-        linear-gradient(118deg, rgba(7, 27, 58, 0.96) 0%, rgba(11, 44, 95, 0.9) 48%, rgba(28, 110, 214, 0.72) 100%),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='900' viewBox='0 0 1600 900'%3E%3Crect width='1600' height='900' fill='%23d9e8f7'/%3E%3Cpath d='M0 520 L350 330 L700 520 L700 900 L0 900 Z' fill='%23ffffff' opacity='.74'/%3E%3Cpath d='M640 500 L1000 265 L1360 500 L1360 900 L640 900 Z' fill='%23f7fbff' opacity='.9'/%3E%3Cpath d='M970 280 L1160 155 L1350 280 Z' fill='%231758aa' opacity='.34'/%3E%3Crect x='790' y='555' width='120' height='110' rx='4' fill='%231758aa' opacity='.22'/%3E%3Crect x='1090' y='555' width='120' height='110' rx='4' fill='%231758aa' opacity='.22'/%3E%3Cpath d='M1210 610 C1320 545 1455 580 1600 500 L1600 900 L1210 900 Z' fill='%23cce0f4' opacity='.75'/%3E%3C/svg%3E");
-      background-size: cover;
-      background-position: center;
-    }
-
-    .hero .container {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 420px;
-      gap: 42px;
-      align-items: center;
-      min-height: 690px;
-      padding: 70px 0 86px;
+      color: var(--navy);
+      background: #ffffff;
+      border-color: rgba(34, 54, 111, 0.18);
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 9px;
+      gap: 8px;
       width: fit-content;
       padding: 8px 12px;
-      color: #dcecff;
-      background: rgba(255, 255, 255, 0.11);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--navy);
+      background: var(--gold-soft);
+      border: 1px solid rgba(201, 147, 6, 0.25);
       border-radius: 999px;
-      font-size: 0.86rem;
-      font-weight: 800;
+      font-size: 0.84rem;
+      font-weight: 850;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.99) 0%, rgba(255, 255, 255, 0.96) 39%, rgba(255, 255, 255, 0.75) 55%, rgba(255, 255, 255, 0.15) 100%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1700' height='980' viewBox='0 0 1700 980'%3E%3Cdefs%3E%3ClinearGradient id='sky' x1='0' x2='1' y1='0' y2='1'%3E%3Cstop stop-color='%23e9f4ff'/%3E%3Cstop offset='.55' stop-color='%23ffffff'/%3E%3Cstop offset='1' stop-color='%23fff4d6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1700' height='980' fill='url(%23sky)'/%3E%3Cpath d='M855 690 C1020 570 1260 520 1700 430 L1700 980 L855 980 Z' fill='%23dcecf8'/%3E%3Cpath d='M990 335 L1318 125 L1650 335 L1650 980 L990 980 Z' fill='%23fffaf0'/%3E%3Cpath d='M940 355 L1318 98 L1715 355' fill='none' stroke='%2322366f' stroke-width='36' stroke-linejoin='round'/%3E%3Crect x='1100' y='460' width='150' height='165' rx='10' fill='%23ffffff' stroke='%23c99306' stroke-width='9'/%3E%3Crect x='1375' y='460' width='150' height='165' rx='10' fill='%23ffffff' stroke='%23c99306' stroke-width='9'/%3E%3Cpath d='M1250 660 h150 v320 h-150 Z' fill='%2322366f'/%3E%3Ccircle cx='1374' cy='808' r='9' fill='%23c99306'/%3E%3Crect x='880' y='760' width='395' height='82' rx='20' fill='%23ffffff' opacity='.93'/%3E%3Cpath d='M925 794 h178M925 817 h124M1168 806 h58' stroke='%2307183a' stroke-width='9' stroke-linecap='round' opacity='.58'/%3E%3Ccircle cx='1262' cy='804' r='25' fill='none' stroke='%23c99306' stroke-width='9'/%3E%3Cpath d='M1286 804 h86 m-24 0 v23 m36-23 v17' stroke='%23c99306' stroke-width='9' stroke-linecap='round'/%3E%3Ccircle cx='1035' cy='608' r='45' fill='%23e8b86b'/%3E%3Cpath d='M960 760 C974 680 1004 642 1035 642 C1069 642 1100 680 1114 760 Z' fill='%2322366f'/%3E%3Cpath d='M1120 642 C1140 606 1180 598 1208 622 C1240 650 1235 704 1180 720' fill='none' stroke='%23df1738' stroke-width='16' stroke-linecap='round' opacity='.9'/%3E%3C/svg%3E");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: clamp(22px, 7vw, 110px);
+      bottom: 54px;
+      width: min(33vw, 420px);
+      aspect-ratio: 0.86;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.72)),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='610' viewBox='0 0 520 610'%3E%3Crect width='520' height='610' rx='28' fill='%23ffffff'/%3E%3Crect x='42' y='42' width='436' height='292' rx='24' fill='%23edf6ff'/%3E%3Cpath d='M62 262 C155 205 262 200 478 140 L478 334 L62 334 Z' fill='%23d6eaf8'/%3E%3Cpath d='M178 186 L260 128 L342 186 L342 290 L178 290 Z' fill='%23fff4d6'/%3E%3Cpath d='M160 196 L260 116 L360 196' fill='none' stroke='%2322366f' stroke-width='14' stroke-linejoin='round'/%3E%3Crect x='218' y='222' width='34' height='34' rx='4' fill='%2322366f'/%3E%3Crect x='270' y='222' width='34' height='34' rx='4' fill='%2322366f'/%3E%3Ccircle cx='260' cy='386' r='56' fill='%23e8b86b'/%3E%3Cpath d='M156 562 C174 462 214 420 260 420 C306 420 346 462 364 562 Z' fill='%2322366f'/%3E%3Cpath d='M180 562 C196 488 226 452 260 452 C294 452 324 488 340 562 Z' fill='%23ffffff' opacity='.94'/%3E%3Cpath d='M80 478 h78M362 478 h78' stroke='%23c99306' stroke-width='10' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-size: cover;
+      border: 1px solid rgba(255, 255, 255, 0.62);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      pointer-events: none;
+    }
+
+    .hero .container {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 410px;
+      gap: 46px;
+      align-items: center;
+      min-height: 770px;
+      padding: 84px 0 98px;
     }
 
     .hero h1 {
+      max-width: 780px;
       margin: 20px 0 18px;
-      max-width: 760px;
-      font-size: clamp(2.55rem, 6vw, 4.9rem);
-      line-height: 0.98;
+      color: var(--navy-dark);
+      font-size: clamp(3rem, 6.5vw, 5.85rem);
+      line-height: 0.96;
       letter-spacing: 0;
     }
 
     .hero-copy {
       max-width: 650px;
       margin: 0;
-      color: #d9e8fb;
-      font-size: clamp(1.05rem, 2vw, 1.22rem);
+      color: #424b5f;
+      font-size: clamp(1.12rem, 2vw, 1.35rem);
     }
 
     .hero-actions {
@@ -262,49 +300,66 @@
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
-      max-width: 660px;
-      margin-top: 38px;
+      max-width: 650px;
+      margin-top: 34px;
+    }
+
+    .trust-item,
+    .card,
+    .quick-card,
+    .panel,
+    .review,
+    .faq-item {
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(228, 231, 236, 0.92);
+      border-top: 3px solid var(--gold);
+      border-radius: var(--radius);
+      box-shadow: 0 14px 44px rgba(7, 24, 58, 0.08);
     }
 
     .trust-item {
       padding: 16px;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: var(--radius);
     }
 
     .trust-item strong {
       display: block;
-      font-size: 1.32rem;
+      color: var(--navy);
+      font-size: 1.26rem;
       line-height: 1.1;
     }
 
     .trust-item span {
       display: block;
       margin-top: 5px;
-      color: #dcecff;
-      font-size: 0.88rem;
+      color: var(--muted);
+      font-size: 0.86rem;
     }
 
     .quick-card {
-      color: var(--ink);
-      background: var(--white);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      position: relative;
       padding: 26px;
+      overflow: hidden;
+    }
+
+    .quick-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 7px;
+      background: linear-gradient(90deg, var(--navy), var(--gold));
     }
 
     .quick-card h2 {
       margin: 0 0 8px;
-      color: var(--blue-950);
-      font-size: 1.42rem;
-      line-height: 1.18;
+      color: var(--navy-dark);
+      font-size: 1.48rem;
+      line-height: 1.14;
     }
 
-    .quick-card p {
-      margin: 0 0 20px;
+    .quick-card p,
+    .card p,
+    .faq-item p {
       color: var(--muted);
-      font-size: 0.96rem;
     }
 
     .mini-form {
@@ -319,7 +374,7 @@
 
     label {
       color: #263a55;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       font-weight: 800;
     }
 
@@ -330,9 +385,9 @@
       min-height: 48px;
       padding: 12px 13px;
       color: var(--ink);
-      background: var(--white);
+      background: #ffffff;
       border: 1px solid var(--line);
-      border-radius: 8px;
+      border-radius: 12px;
       outline: none;
       transition: border 150ms ease, box-shadow 150ms ease;
     }
@@ -340,38 +395,124 @@
     input:focus,
     select:focus,
     textarea:focus {
-      border-color: var(--blue-600);
-      box-shadow: 0 0 0 4px rgba(28, 110, 214, 0.14);
+      border-color: var(--navy);
+      box-shadow: 0 0 0 4px rgba(34, 54, 111, 0.13);
     }
 
     section {
-      padding: 86px 0;
+      padding: 92px 0;
     }
 
     .section-light {
-      background: var(--blue-50);
+      background: var(--soft);
     }
 
     .section-head {
       display: flex;
       align-items: end;
       justify-content: space-between;
-      gap: 28px;
+      gap: 30px;
       margin-bottom: 30px;
     }
 
     .section-head h2 {
+      max-width: 660px;
       margin: 0;
-      color: var(--blue-950);
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.06;
+      color: var(--navy-dark);
+      font-size: clamp(2rem, 4.2vw, 3.2rem);
+      line-height: 1.05;
       letter-spacing: 0;
     }
 
     .section-head p {
-      max-width: 550px;
+      max-width: 540px;
       margin: 0;
       color: var(--muted);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .alex-visual {
+      min-height: 440px;
+      border-radius: 28px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(7, 24, 58, 0.32)),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='760' height='760' viewBox='0 0 760 760'%3E%3Crect width='760' height='760' fill='%23edf6ff'/%3E%3Cpath d='M0 560 C160 475 340 460 760 360 L760 760 L0 760 Z' fill='%23d5e8f5'/%3E%3Cpath d='M120 305 L365 140 L610 305 L610 760 L120 760 Z' fill='%23fff4d6'/%3E%3Cpath d='M86 322 L365 110 L650 322' fill='none' stroke='%2322366f' stroke-width='28' stroke-linejoin='round'/%3E%3Crect x='220' y='388' width='96' height='96' rx='10' fill='%23ffffff' stroke='%23c99306' stroke-width='8'/%3E%3Crect x='414' y='388' width='96' height='96' rx='10' fill='%23ffffff' stroke='%23c99306' stroke-width='8'/%3E%3Cpath d='M340 558 h92 v202 h-92 Z' fill='%2322366f'/%3E%3Ccircle cx='420' cy='660' r='8' fill='%23c99306'/%3E%3Ccircle cx='168' cy='535' r='48' fill='%23e8b86b'/%3E%3Cpath d='M84 760 C96 622 132 580 168 580 C206 580 242 622 254 760 Z' fill='%2322366f'/%3E%3C/svg%3E");
+      background-size: cover;
+      background-position: center;
+      box-shadow: var(--shadow);
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 12px;
+      margin: 26px 0 30px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .feature-list li {
+      display: flex;
+      gap: 11px;
+      align-items: flex-start;
+      color: #263a55;
+      font-weight: 750;
+    }
+
+    .check {
+      width: 23px;
+      height: 23px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      color: var(--navy-dark);
+      background: var(--gold);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      line-height: 1;
+    }
+
+    .cards-grid,
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card,
+    .faq-item {
+      padding: 24px;
+    }
+
+    .icon-box {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      color: var(--navy);
+      background: var(--gold-soft);
+      border: 1px solid rgba(201, 147, 6, 0.24);
+      border-radius: 14px;
+      font-weight: 900;
+    }
+
+    .card h3,
+    .faq-item h3 {
+      margin: 0 0 8px;
+      color: var(--navy-dark);
+      font-size: 1.12rem;
+      line-height: 1.2;
+    }
+
+    .card p,
+    .faq-item p {
+      margin: 0;
     }
 
     .calculator {
@@ -382,10 +523,7 @@
     }
 
     .panel {
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: 0 12px 34px rgba(7, 27, 58, 0.08);
+      background: #ffffff;
     }
 
     .calc-fields {
@@ -401,24 +539,41 @@
       justify-content: space-between;
       gap: 22px;
       padding: 26px;
-      color: var(--white);
-      background: var(--blue-900);
-      border-color: var(--blue-900);
+      color: #ffffff;
+      background: linear-gradient(145deg, var(--navy), var(--navy-dark));
+      border-color: var(--navy);
     }
 
     .result-kicker {
       margin: 0 0 8px;
-      color: #b9d9ff;
-      font-size: 0.86rem;
-      font-weight: 800;
+      color: #d7e7ff;
+      font-size: 0.84rem;
+      font-weight: 850;
       text-transform: uppercase;
     }
 
     .result-number {
       margin: 0;
-      font-size: clamp(2.4rem, 6vw, 3.4rem);
+      font-size: clamp(2.4rem, 6vw, 3.45rem);
       line-height: 1;
-      font-weight: 900;
+      font-weight: 950;
+    }
+
+    .budget-meter {
+      height: 8px;
+      margin-top: 18px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+    }
+
+    .budget-meter span {
+      display: block;
+      width: 0;
+      height: 100%;
+      background: var(--gold);
+      border-radius: inherit;
+      transition: width 240ms ease;
     }
 
     .result-meta {
@@ -438,144 +593,28 @@
     }
 
     .result-line strong {
-      color: var(--white);
+      color: #ffffff;
       text-align: right;
     }
 
     .result-note {
-      margin: 0;
-      color: #c8dcf5;
+      margin: 0 0 14px;
+      color: #d8e7fa;
       font-size: 0.88rem;
     }
 
-    .steps-grid,
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .step,
-    .review {
-      padding: 24px;
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: 0 10px 28px rgba(7, 27, 58, 0.07);
-    }
-
-    .icon-box {
-      width: 44px;
-      height: 44px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 18px;
-      color: var(--blue-900);
-      background: var(--blue-100);
-      border-radius: 8px;
-      font-weight: 900;
-    }
-
-    .step h3,
-    .review h3 {
-      margin: 0 0 8px;
-      color: var(--blue-950);
-      font-size: 1.12rem;
-    }
-
-    .step p,
-    .review p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .about-wrap {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 42px;
-      align-items: center;
-    }
-
-    .portrait {
-      min-height: 430px;
-      overflow: hidden;
-      border-radius: var(--radius);
-      background:
-        linear-gradient(145deg, rgba(11, 44, 95, 0.84), rgba(28, 110, 214, 0.5)),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='760' viewBox='0 0 700 760'%3E%3Crect width='700' height='760' fill='%23eef6ff'/%3E%3Ccircle cx='350' cy='225' r='106' fill='%23b9d2ec'/%3E%3Cpath d='M165 760 C174 512 255 384 350 384 C445 384 526 512 535 760 Z' fill='%23123f7c'/%3E%3Cpath d='M225 760 C242 588 285 455 350 455 C415 455 458 588 475 760 Z' fill='%23ffffff' opacity='.92'/%3E%3Cpath d='M95 120 C180 30 280 12 385 60 C515 118 565 250 628 350 L628 0 L95 0 Z' fill='%231c6ed6' opacity='.2'/%3E%3C/svg%3E");
-      background-size: cover;
-      background-position: center;
-      box-shadow: var(--shadow);
-    }
-
-    .about-content h2 {
-      margin: 0 0 18px;
-      color: var(--blue-950);
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.06;
-    }
-
-    .about-content p {
-      margin: 0 0 16px;
-      color: var(--muted);
-      font-size: 1.03rem;
-    }
-
-    .feature-list {
-      display: grid;
+    .faq-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin: 26px 0 30px;
-      padding: 0;
-      list-style: none;
-    }
-
-    .feature-list li {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      color: #263a55;
-      font-weight: 700;
-    }
-
-    .check {
-      width: 22px;
-      height: 22px;
-      display: grid;
-      place-items: center;
-      flex: 0 0 auto;
-      color: var(--white);
-      background: var(--success);
-      border-radius: 999px;
-      font-size: 0.82rem;
-      line-height: 1;
-    }
-
-    .stars {
-      color: var(--warning);
-      font-size: 1.08rem;
-      margin-bottom: 12px;
-    }
-
-    .review cite {
-      display: block;
-      margin-top: 18px;
-      color: var(--blue-900);
-      font-style: normal;
-      font-weight: 900;
     }
 
     .contact-wrap {
-      display: grid;
-      grid-template-columns: 0.86fr 1.14fr;
-      gap: 28px;
-      align-items: stretch;
+      max-width: 900px;
     }
 
     .contact-info {
       padding: 30px;
-      color: var(--white);
-      background: var(--blue-900);
+      color: #ffffff;
+      background: linear-gradient(145deg, var(--navy), var(--navy-dark));
       border-radius: var(--radius);
       box-shadow: var(--shadow);
     }
@@ -607,58 +646,24 @@
       font-weight: 750;
     }
 
-    .lead-form {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-      padding: 30px;
-    }
-
-    .lead-form .full {
-      grid-column: 1 / -1;
-    }
-
-    textarea {
-      min-height: 116px;
-      resize: vertical;
-    }
-
     .form-status {
       min-height: 24px;
       margin: 0;
-      color: var(--success);
-      font-weight: 800;
+      color: var(--gold);
+      font-weight: 850;
     }
 
-    .cta-band {
-      padding: 52px 0;
-      color: var(--white);
-      background: var(--blue-800);
-    }
-
-    .cta-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .cta-inner h2 {
-      margin: 0 0 8px;
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      line-height: 1.08;
-    }
-
-    .cta-inner p {
-      margin: 0;
-      color: #dcecff;
-      max-width: 620px;
+    .form-consent {
+      margin: -2px 0 0;
+      color: var(--muted);
+      font-size: 0.78rem;
+      line-height: 1.45;
     }
 
     footer {
       padding: 30px 0;
       color: #dcecff;
-      background: var(--blue-950);
+      background: var(--navy-dark);
     }
 
     .footer-inner {
@@ -670,18 +675,27 @@
     }
 
     .footer-inner a {
-      font-weight: 800;
-      color: var(--white);
+      color: #ffffff;
+      font-weight: 850;
     }
 
-    [data-i18n] {
-      transition: opacity 120ms ease;
+    .footer-legal {
+      margin: 18px 0 0;
+      padding-top: 18px;
+      color: #a9b9d6;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.78rem;
+      line-height: 1.55;
+    }
+
+    .mobile-cta {
+      display: none;
     }
 
     @media (max-width: 980px) {
       .nav {
         flex-wrap: wrap;
-        padding: 14px 0;
+        padding: 12px 0;
       }
 
       .nav-links {
@@ -692,51 +706,90 @@
       }
 
       .hero .container,
-      .calculator,
-      .about-wrap,
-      .contact-wrap {
+      .split,
+      .calculator {
         grid-template-columns: 1fr;
       }
 
       .hero .container {
         min-height: auto;
-        padding: 58px 0 68px;
+        padding: 64px 0 72px;
+      }
+
+      .hero::after {
+        display: none;
       }
 
       .quick-card {
-        max-width: 560px;
+        max-width: 570px;
       }
 
       .section-head {
         display: grid;
       }
 
-      .steps-grid,
-      .reviews-grid {
+      .cards-grid {
         grid-template-columns: 1fr 1fr;
-      }
-
-      .portrait {
-        min-height: 360px;
       }
     }
 
     @media (max-width: 720px) {
+      body {
+        padding-bottom: 70px;
+      }
+
       .container {
         width: min(100% - 28px, var(--max));
       }
 
-      .topbar {
-        position: static;
-      }
-
       .nav {
-        align-items: stretch;
+        position: relative;
+        min-height: 72px;
+        gap: 10px;
       }
 
-      .brand-sub,
+      .brand-name {
+        font-size: 0.96rem;
+      }
+
+      .brand-sub {
+        font-size: 0.7rem;
+      }
+
+      .menu-btn {
+        display: inline-flex;
+      }
+
+      .lang-toggle {
+        padding: 3px;
+        gap: 2px;
+      }
+
+      .lang-btn {
+        min-width: auto;
+        padding: 6px 8px;
+        font-size: 0.76rem;
+      }
+
       .nav-links {
+        position: absolute;
+        top: calc(100% + 1px);
+        left: 0;
+        right: 0;
         display: none;
+        padding: 14px;
+        background: #ffffff;
+        border: 1px solid var(--line);
+        border-radius: 0 0 16px 16px;
+        box-shadow: 0 18px 34px rgba(7, 24, 58, 0.14);
+      }
+
+      .nav-links.open {
+        display: grid;
+      }
+
+      .nav-links a {
+        padding: 10px 8px;
       }
 
       .nav-actions {
@@ -748,11 +801,11 @@
       }
 
       .hero h1 {
-        font-size: clamp(2.3rem, 13vw, 3.7rem);
+        font-size: clamp(2.3rem, 11vw, 3.3rem);
       }
 
       .hero-actions,
-      .cta-inner,
+      .final-inner,
       .footer-inner {
         align-items: stretch;
         flex-direction: column;
@@ -763,31 +816,68 @@
         white-space: normal;
       }
 
-      .trust-row,
-      .calc-fields,
-      .steps-grid,
-      .reviews-grid,
-      .feature-list,
-      .lead-form {
+      .trust-row {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+        margin-top: 24px;
+      }
+
+      .trust-item {
+        padding: 10px 8px;
+      }
+
+      .trust-item strong {
+        font-size: 1rem;
+      }
+
+      .trust-item span {
+        font-size: 0.72rem;
+        line-height: 1.25;
+      }
+
+      .cards-grid,
+      .faq-grid,
+      .calc-fields {
         grid-template-columns: 1fr;
       }
 
       section {
-        padding: 64px 0;
+        padding: 66px 0;
       }
 
       .quick-card,
+      .card,
+      .faq-item,
       .calc-fields,
       .result-panel,
-      .step,
-      .review,
-      .contact-info,
-      .lead-form {
+      .contact-info {
         padding: 22px;
       }
 
-      .lead-form .full {
-        grid-column: auto;
+      .alex-visual {
+        min-height: 320px;
+      }
+
+      .mobile-cta {
+        position: fixed;
+        z-index: 60;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        padding: 10px 14px;
+        background: rgba(255, 255, 255, 0.97);
+        border-top: 1px solid var(--line);
+        box-shadow: 0 -10px 28px rgba(7, 24, 58, 0.12);
+        backdrop-filter: blur(12px);
+      }
+
+      .mobile-cta .btn {
+        min-height: 48px;
+        padding: 10px;
+        font-size: 0.86rem;
       }
     }
   </style>
@@ -795,25 +885,29 @@
 <body>
   <header class="topbar">
     <div class="container nav" aria-label="Main navigation">
-      <a class="brand" href="#top" aria-label="Qualify With Alex home">
-        <span class="brand-mark">QA</span>
+      <a class="brand" href="#top" aria-label="Alex Marroquin home">
         <span class="brand-text">
-          <span class="brand-name">QualifyWithAlex.com</span>
-          <span class="brand-sub" data-i18n="brandSub">Mortgage guidance made clear</span>
+          <span class="brand-name">Alex Marroquin</span>
+          <span class="brand-sub">Magistrelli Mortgages</span>
         </span>
       </a>
-      <nav class="nav-links" aria-label="Page sections">
+      <nav class="nav-links" id="mainNavigation" aria-label="Page sections">
+        <a href="#why" data-i18n="navWhy">Why Alex</a>
+        <a href="#programs" data-i18n="navPrograms">Loan Programs</a>
         <a href="#calculator" data-i18n="navCalculator">Calculator</a>
-        <a href="#about" data-i18n="navAbout">About Alex</a>
-        <a href="#reviews" data-i18n="navReviews">Reviews</a>
-        <a href="#contact" data-i18n="navContact">Contact</a>
+        <a href="#faq" data-i18n="navFaq">FAQ</a>
       </nav>
       <div class="nav-actions">
         <div class="lang-toggle" aria-label="Language toggle">
-          <button class="lang-btn active" type="button" data-lang="en" aria-pressed="true">EN</button>
-          <button class="lang-btn" type="button" data-lang="es" aria-pressed="false">ES</button>
+          <button class="lang-btn active" type="button" data-lang="en" aria-pressed="true">English</button>
+          <button class="lang-btn" type="button" data-lang="es" aria-pressed="false">Espanol</button>
         </div>
-        <a class="btn btn-primary" href="#contact" data-i18n="navCta">Get Pre-Qualified</a>
+        <button class="menu-btn" id="menuButton" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mainNavigation">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16"></path>
+          </svg>
+        </button>
+        <a class="btn" href="#preapproval-form" data-i18n="navCta">Get Pre-Approved</a>
       </div>
     </div>
   </header>
@@ -822,61 +916,113 @@
     <section class="hero">
       <div class="container">
         <div>
-          <span class="eyebrow" data-i18n="heroEyebrow">Mortgage affordability, made simple</span>
-          <h1 data-i18n="heroHeadline">Find Out How Much Home You Can Afford</h1>
-          <p class="hero-copy" data-i18n="heroCopy">Start with a fast estimate, then connect with Alex for a clear loan strategy built around your income, monthly debts, down payment, and credit profile.</p>
+          <span class="eyebrow" data-i18n="heroEyebrow">Florida home loans with Alex Marroquin</span>
+          <h1 data-i18n="heroHeadline">Get Pre-Approved With a Mortgage Plan That Fits</h1>
+          <p class="hero-copy" data-i18n="heroCopy">From Instagram to application, get a premium, simple experience: clear numbers, smart loan options, and bilingual support from Alex.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#calculator" data-i18n="heroPrimary">Calculate My Budget</a>
-            <a class="btn btn-secondary" href="#contact" data-i18n="heroSecondary">Talk With Alex</a>
+            <a class="btn btn-gold" href="#preapproval-form" data-i18n="heroPrimary">Get Pre-Approved</a>
+            <a class="btn btn-outline" href="#calculator" data-i18n="heroSecondary">Check Affordability</a>
           </div>
           <div class="trust-row" aria-label="Highlights">
             <div class="trust-item">
               <strong data-i18n="trustOneValue">Fast</strong>
-              <span data-i18n="trustOneLabel">home affordability estimate</span>
+              <span data-i18n="trustOneLabel">next-step guidance</span>
             </div>
             <div class="trust-item">
               <strong data-i18n="trustTwoValue">Clear</strong>
-              <span data-i18n="trustTwoLabel">next steps for buyers</span>
+              <span data-i18n="trustTwoLabel">payment planning</span>
             </div>
             <div class="trust-item">
-              <strong data-i18n="trustThreeValue">1:1</strong>
-              <span data-i18n="trustThreeLabel">mortgage guidance</span>
+              <strong data-i18n="trustThreeValue">Bilingual</strong>
+              <span data-i18n="trustThreeLabel">English and Spanish</span>
             </div>
           </div>
         </div>
 
-        <aside class="quick-card" aria-label="Lead capture">
-          <h2 data-i18n="quickTitle">Ready to see your options?</h2>
-          <p data-i18n="quickCopy">Share your details and Alex will help you understand your buying power.</p>
-          <form class="mini-form lead-capture" action="https://api.web3forms.com/submit" method="POST">
-            <input type="hidden" name="access_key" value=c8888f52-e618-4520-9042-203286175b4a>
-
-            <input type="hidden" name="subject" value="New Lead from Top Form - QualifyWithAlex.com">
-
-            <input type="hidden" name="from_name" value="QualifyWithAlex Website">
+        <aside class="quick-card" aria-label="Quick pre-approval form">
+          <h2 data-i18n="quickTitle">Start your pre-approval</h2>
+          <p data-i18n="quickCopy">Send your details and Alex will follow up with your best next step.</p>
+          <form class="mini-form lead-capture" id="preapproval-form">
             <div class="field">
               <label for="quick-name" data-i18n="labelName">Name</label>
               <input id="quick-name" name="name" type="text" autocomplete="name" required>
             </div>
             <div class="field">
-              <label for="quick-phone" data-i18n="labelPhone">Phone</label>
-              <input id="quick-phone" name="phone" type="tel" autocomplete="tel" required>
-            </div>
-            <div class="field">
               <label for="quick-email" data-i18n="labelEmail">Email</label>
               <input id="quick-email" name="email" type="email" autocomplete="email" required>
             </div>
-            <button class="btn btn-primary" type="submit" data-i18n="quickButton">Request My Estimate</button>
+            <button class="btn btn-gold" type="submit" data-i18n="quickButton">Send My Request</button>
             <p class="form-status" aria-live="polite"></p>
           </form>
         </aside>
       </div>
     </section>
 
+    <section id="why">
+      <div class="container split">
+        <div class="alex-visual" role="img" aria-label="Luxury Florida home and mortgage planning visual"></div>
+        <div>
+          <span class="eyebrow" data-i18n="whyEyebrow">Why work with Alex</span>
+          <div class="section-head">
+            <h2 data-i18n="whyTitle">A polished mortgage experience that matches your goals.</h2>
+          </div>
+          <p data-i18n="whyCopy">Your landing page should feel like the same brand people see in your videos: bright homes, clean white space, navy and gold accents, and simple next steps. Alex helps borrowers move from curiosity to confidence with numbers they can understand.</p>
+          <ul class="feature-list">
+            <li><span class="check">&check;</span><span data-i18n="whyOne">Pre-approval guidance before you shop</span></li>
+            <li><span class="check">&check;</span><span data-i18n="whyTwo">Payment, down payment, and cash-to-close planning</span></li>
+            <li><span class="check">&check;</span><span data-i18n="whyThree">English and Spanish communication</span></li>
+            <li><span class="check">&check;</span><span data-i18n="whyFour">Clear loan options without pressure</span></li>
+          </ul>
+          <a class="btn" href="#preapproval-form" data-i18n="whyCta">Talk With Alex</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="programs" class="section-light">
+      <div class="container">
+        <div class="section-head">
+          <h2 data-i18n="programsTitle">Loan programs for different buyer paths.</h2>
+          <p data-i18n="programsIntro">Alex can help you compare common options and decide which path fits your credit, income, down payment, and timeline.</p>
+        </div>
+        <div class="cards-grid">
+          <article class="card">
+            <div class="icon-box">01</div>
+            <h3 data-i18n="programOneTitle">Conventional</h3>
+            <p data-i18n="programOneCopy">A strong fit for many buyers with established credit and flexible down payment options.</p>
+          </article>
+          <article class="card">
+            <div class="icon-box">02</div>
+            <h3 data-i18n="programTwoTitle">FHA</h3>
+            <p data-i18n="programTwoCopy">Popular with first-time buyers and borrowers who want more flexible qualification guidelines.</p>
+          </article>
+          <article class="card">
+            <div class="icon-box">03</div>
+            <h3 data-i18n="programThreeTitle">VA</h3>
+            <p data-i18n="programThreeCopy">For eligible veterans, service members, and families looking for powerful home financing benefits.</p>
+          </article>
+          <article class="card">
+            <div class="icon-box">04</div>
+            <h3 data-i18n="programFourTitle">Refinance</h3>
+            <p data-i18n="programFourCopy">Review your payment, equity, or loan structure when your financial goals change.</p>
+          </article>
+          <article class="card">
+            <div class="icon-box">05</div>
+            <h3 data-i18n="programFiveTitle">Jumbo</h3>
+            <p data-i18n="programFiveCopy">Financing paths for higher-value homes and luxury property scenarios.</p>
+          </article>
+          <article class="card">
+            <div class="icon-box">06</div>
+            <h3 data-i18n="programSixTitle">Credit planning</h3>
+            <p data-i18n="programSixCopy">If you are not ready yet, get a clear plan for what to improve before applying.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="calculator" class="section-light">
       <div class="container">
         <div class="section-head">
-          <h2 data-i18n="calcTitle">Affordability Calculator</h2>
+          <h2 data-i18n="calcTitle">Affordability calculator</h2>
           <p data-i18n="calcIntro">Use this quick estimate to understand a realistic purchase range. Final approval depends on full underwriting, loan program, interest rate, taxes, insurance, and property details.</p>
         </div>
 
@@ -922,6 +1068,7 @@
             <div>
               <p class="result-kicker" data-i18n="resultKicker">Estimated home budget</p>
               <p class="result-number" id="homeBudget">$0</p>
+              <div class="budget-meter" aria-hidden="true"><span id="budgetMeter"></span></div>
               <div class="result-meta">
                 <div class="result-line">
                   <span data-i18n="resultPayment">Estimated monthly payment</span>
@@ -939,175 +1086,119 @@
             </div>
             <div>
               <p class="result-note" data-i18n="resultNote">This calculator is for planning only and is not a loan approval or commitment to lend.</p>
-              <a class="btn btn-secondary" href="#contact" data-i18n="resultCta">Get a Personalized Review</a>
+              <button class="btn btn-gold" id="reviewEstimate" type="button" data-i18n="resultCta">Start My Pre-Approval</button>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section>
+    <section id="faq">
       <div class="container">
         <div class="section-head">
-          <h2 data-i18n="processTitle">A simple path to your next home</h2>
-          <p data-i18n="processIntro">From first estimate to confident offer, Alex helps you understand the numbers before you fall in love with a property.</p>
+          <h2 data-i18n="faqTitle">Questions borrowers ask before getting pre-approved.</h2>
+          <p data-i18n="faqIntro">Clear answers help turn a lead into a confident conversation.</p>
         </div>
-        <div class="steps-grid">
-          <article class="step">
-            <div class="icon-box">1</div>
-            <h3 data-i18n="stepOneTitle">Estimate your budget</h3>
-            <p data-i18n="stepOneCopy">Use income, debt, down payment, and credit range to see a practical starting point.</p>
+        <div class="faq-grid">
+          <article class="faq-item">
+            <h3 data-i18n="faqOneTitle">Does this calculator approve my loan?</h3>
+            <p data-i18n="faqOneCopy">No. It is a planning tool. A true pre-approval depends on documents, credit, income, assets, program guidelines, and underwriting.</p>
           </article>
-          <article class="step">
-            <div class="icon-box">2</div>
-            <h3 data-i18n="stepTwoTitle">Review loan options</h3>
-            <p data-i18n="stepTwoCopy">Compare programs, monthly payment targets, and cash-to-close expectations.</p>
+          <article class="faq-item">
+            <h3 data-i18n="faqTwoTitle">What happens after I submit the form?</h3>
+            <p data-i18n="faqTwoCopy">Alex reviews your request and follows up with the best next step for your buying timeline.</p>
           </article>
-          <article class="step">
-            <div class="icon-box">3</div>
-            <h3 data-i18n="stepThreeTitle">Shop with confidence</h3>
-            <p data-i18n="stepThreeCopy">Move forward with a clear plan and the documents you need to compete.</p>
+          <article class="faq-item">
+            <h3 data-i18n="faqThreeTitle">Can I get help in Spanish?</h3>
+            <p data-i18n="faqThreeCopy">Yes. Alex supports borrowers in English and Spanish so the numbers and process are easy to understand.</p>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="section-light">
-      <div class="container about-wrap">
-        <div class="portrait" role="img" aria-label="Professional portrait illustration of Alex"></div>
-        <div class="about-content">
-          <h2 data-i18n="aboutTitle">About Alex</h2>
-          <p data-i18n="aboutCopyOne">Alex helps homebuyers turn confusing mortgage numbers into a clear plan. Whether you are buying your first home, moving up, or preparing after a credit reset, you will get straightforward guidance in plain language.</p>
-          <p data-i18n="aboutCopyTwo">The goal is simple: help you understand what you can afford, what loan options may fit, and what steps can improve your approval path.</p>
-          <ul class="feature-list">
-            <li><span class="check">&check;</span><span data-i18n="featureOne">First-time buyer guidance</span></li>
-            <li><span class="check">&check;</span><span data-i18n="featureTwo">Bilingual support</span></li>
-            <li><span class="check">&check;</span><span data-i18n="featureThree">Refinance and purchase options</span></li>
-            <li><span class="check">&check;</span><span data-i18n="featureFour">Clear payment planning</span></li>
-          </ul>
-          <a class="btn btn-primary" href="#contact" data-i18n="aboutCta">Ask Alex a Question</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="reviews">
-      <div class="container">
-        <div class="section-head">
-          <h2 data-i18n="reviewsTitle">What buyers appreciate</h2>
-          <p data-i18n="reviewsIntro">Helpful mortgage support should feel responsive, transparent, and easy to understand.</p>
-        </div>
-        <div class="reviews-grid">
-          <article class="review">
-            <div class="stars" aria-label="Five stars">&starf;&starf;&starf;&starf;&starf;</div>
-            <h3 data-i18n="reviewOneTitle">Clear from day one</h3>
-            <p data-i18n="reviewOneCopy">Alex explained the payment, the documents, and the timeline without pressure. We knew exactly what to expect.</p>
-            <cite data-i18n="reviewOneName">Maria R.</cite>
-          </article>
-          <article class="review">
-            <div class="stars" aria-label="Five stars">&starf;&starf;&starf;&starf;&starf;</div>
-            <h3 data-i18n="reviewTwoTitle">Fast answers</h3>
-            <p data-i18n="reviewTwoCopy">Every question was answered quickly. The numbers finally made sense before we started touring homes.</p>
-            <cite data-i18n="reviewTwoName">James T.</cite>
-          </article>
-          <article class="review">
-            <div class="stars" aria-label="Five stars">&starf;&starf;&starf;&starf;&starf;</div>
-            <h3 data-i18n="reviewThreeTitle">A real plan</h3>
-            <p data-i18n="reviewThreeCopy">We were not ready at first, but Alex showed us the exact steps to improve our buying position.</p>
-            <cite data-i18n="reviewThreeName">Sofia & Daniel</cite>
+          <article class="faq-item">
+            <h3 data-i18n="faqFourTitle">What if I am not ready yet?</h3>
+            <p data-i18n="faqFourCopy">You can still get a plan for credit, savings, documents, and timing so you know what to work on next.</p>
           </article>
         </div>
-      </div>
-    </section>
-
-    <section class="cta-band">
-      <div class="container cta-inner">
-        <div>
-          <h2 data-i18n="bandTitle">Know your buying power before you shop.</h2>
-          <p data-i18n="bandCopy">Get a personalized estimate and a clear mortgage game plan from Alex.</p>
-        </div>
-        <a class="btn btn-secondary" href="#contact" data-i18n="bandCta">Start Now</a>
       </div>
     </section>
 
     <section id="contact" class="section-light">
       <div class="container contact-wrap">
         <aside class="contact-info">
-          <h2 data-i18n="contactTitle">Contact Alex</h2>
-          <p data-i18n="contactCopy">Send your information and Alex will follow up to discuss affordability, pre-qualification, and your best next step.</p>
+          <h2 data-i18n="contactTitle">Ready to get pre-approved?</h2>
+          <p data-i18n="contactCopy">Start with the short form above and Alex will follow up by email with your best next step.</p>
           <ul class="contact-list">
-            <li><span class="check">&check;</span><span data-i18n="contactItemOne">Quick affordability review</span></li>
+            <li><span class="check">&check;</span><span data-i18n="contactItemOne">Quick pre-approval review</span></li>
             <li><span class="check">&check;</span><span data-i18n="contactItemTwo">English and Spanish support</span></li>
-            <li><span class="check">&check;</span><span data-i18n="contactItemThree">No-obligation conversation</span></li>
+            <li><span class="check">&check;</span><span data-i18n="contactItemThree">Mortgage plan before you shop</span></li>
           </ul>
-          <a class="btn btn-secondary" href="tel:+15551234567" data-i18n="contactCall">Call Alex</a>
+          <a class="btn btn-gold" href="#preapproval-form" data-i18n="contactCall">Go to the Form</a>
         </aside>
-
-        <form class="panel lead-form lead-capture" action="https://api.web3forms.com/submit" method="POST">
-          
-          <input type="hidden" name="access_key" value=c8888f52-e618-4520-9042-203286175b4a>
-
-          <input type="hidden" name="subject" value="New Lead from QualifyWithAlex.com">
-
-          <input type="hidden" name="from_name" value="QualifyWithAlex Website">
-          
-          <div class="field">
-            <label for="name" data-i18n="labelName">Name</label>
-            <input id="name" name="name" type="text" autocomplete="name" required>
-          </div>
-          <div class="field">
-            <label for="phone" data-i18n="labelPhone">Phone</label>
-            <input id="phone" name="phone" type="tel" autocomplete="tel" required>
-          </div>
-          <div class="field full">
-            <label for="email" data-i18n="labelEmail">Email</label>
-            <input id="email" name="email" type="email" autocomplete="email" required>
-          </div>
-          <div class="field full">
-            <label for="message" data-i18n="labelMessage">What can Alex help with?</label>
-            <textarea id="message" name="message" data-i18n-placeholder="messagePlaceholder" placeholder="I want to know how much home I can afford."></textarea>
-          </div>
-          <div class="full">
-            <button class="btn btn-primary" type="submit" data-i18n="contactButton">Send My Info</button>
-          </div>
-          <p class="form-status full" aria-live="polite"></p>
-        </form>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container footer-inner">
-      <span data-i18n="footerCopy">&copy; 2026 QualifyWithAlex.com. Mortgage information for planning purposes only.</span>
-      <a href="#top" data-i18n="footerTop">Back to top</a>
+    <div class="container">
+      <div class="footer-inner">
+        <span data-i18n="footerCopy">&copy; 2026 Magistrelli Mortgages. Mortgage information for planning purposes only.</span>
+        <a href="#top" data-i18n="footerTop">Back to top</a>
+      </div>
+      <p class="footer-legal" data-i18n="footerLegal">Calculator results are estimates only. Actual eligibility, rates, payments, closing costs, taxes, and insurance vary by borrower, loan program, and property. All loans are subject to application, verification, and approval.</p>
     </div>
   </footer>
+
+  <div class="mobile-cta" aria-label="Quick actions">
+    <a class="btn btn-outline" href="#calculator" data-i18n="mobileCalc">Calculate</a>
+    <a class="btn" href="#preapproval-form" data-i18n="mobileContact">Pre-Approve</a>
+  </div>
 
   <script>
     const translations = {
       en: {
-        brandSub: "Mortgage guidance made clear",
+        navWhy: "Why Alex",
+        navPrograms: "Loan Programs",
         navCalculator: "Calculator",
-        navAbout: "About Alex",
-        navReviews: "Reviews",
-        navContact: "Contact",
-        navCta: "Get Pre-Qualified",
-        heroEyebrow: "Mortgage affordability, made simple",
-        heroHeadline: "Find Out How Much Home You Can Afford",
-        heroCopy: "Start with a fast estimate, then connect with Alex for a clear loan strategy built around your income, monthly debts, down payment, and credit profile.",
-        heroPrimary: "Calculate My Budget",
-        heroSecondary: "Talk With Alex",
+        navFaq: "FAQ",
+        navCta: "Get Pre-Approved",
+        heroEyebrow: "Florida home loans with Alex Marroquin",
+        heroHeadline: "Get Pre-Approved With a Mortgage Plan That Fits",
+        heroCopy: "From Instagram to application, get a premium, simple experience: clear numbers, smart loan options, and bilingual support from Alex.",
+        heroPrimary: "Get Pre-Approved",
+        heroSecondary: "Check Affordability",
         trustOneValue: "Fast",
-        trustOneLabel: "home affordability estimate",
+        trustOneLabel: "next-step guidance",
         trustTwoValue: "Clear",
-        trustTwoLabel: "next steps for buyers",
-        trustThreeValue: "1:1",
-        trustThreeLabel: "mortgage guidance",
-        quickTitle: "Ready to see your options?",
-        quickCopy: "Share your details and Alex will help you understand your buying power.",
-        quickButton: "Request My Estimate",
+        trustTwoLabel: "payment planning",
+        trustThreeValue: "Bilingual",
+        trustThreeLabel: "English and Spanish",
+        quickTitle: "Start your pre-approval",
+        quickCopy: "Send your details and Alex will follow up with your best next step.",
+        quickButton: "Send My Request",
         labelName: "Name",
-        labelPhone: "Phone",
         labelEmail: "Email",
+        whyEyebrow: "Why work with Alex",
+        whyTitle: "A polished mortgage experience that matches your goals.",
+        whyCopy: "Your landing page should feel like the same brand people see in your videos: bright homes, clean white space, navy and gold accents, and simple next steps. Alex helps borrowers move from curiosity to confidence with numbers they can understand.",
+        whyOne: "Pre-approval guidance before you shop",
+        whyTwo: "Payment, down payment, and cash-to-close planning",
+        whyThree: "English and Spanish communication",
+        whyFour: "Clear loan options without pressure",
+        whyCta: "Talk With Alex",
+        programsTitle: "Loan programs for different buyer paths.",
+        programsIntro: "Alex can help you compare common options and decide which path fits your credit, income, down payment, and timeline.",
+        programOneTitle: "Conventional",
+        programOneCopy: "A strong fit for many buyers with established credit and flexible down payment options.",
+        programTwoTitle: "FHA",
+        programTwoCopy: "Popular with first-time buyers and borrowers who want more flexible qualification guidelines.",
+        programThreeTitle: "VA",
+        programThreeCopy: "For eligible veterans, service members, and families looking for powerful home financing benefits.",
+        programFourTitle: "Refinance",
+        programFourCopy: "Review your payment, equity, or loan structure when your financial goals change.",
+        programFiveTitle: "Jumbo",
+        programFiveCopy: "Financing paths for higher-value homes and luxury property scenarios.",
+        programSixTitle: "Credit planning",
+        programSixCopy: "If you are not ready yet, get a clear plan for what to improve before applying.",
+        calcTitle: "Affordability calculator",
+        calcIntro: "Use this quick estimate to understand a realistic purchase range. Final approval depends on full underwriting, loan program, interest rate, taxes, insurance, and property details.",
         labelIncome: "Annual Income",
         labelDebt: "Monthly Debt",
         labelDown: "Down Payment",
@@ -1117,81 +1208,85 @@
         termThirty: "30 years",
         termTwenty: "20 years",
         termFifteen: "15 years",
-        calcTitle: "Affordability Calculator",
-        calcIntro: "Use this quick estimate to understand a realistic purchase range. Final approval depends on full underwriting, loan program, interest rate, taxes, insurance, and property details.",
         resultKicker: "Estimated home budget",
         resultPayment: "Estimated monthly payment",
         resultLoan: "Estimated loan amount",
         resultRate: "Rate used for estimate",
         resultNote: "This calculator is for planning only and is not a loan approval or commitment to lend.",
-        resultCta: "Get a Personalized Review",
-        processTitle: "A simple path to your next home",
-        processIntro: "From first estimate to confident offer, Alex helps you understand the numbers before you fall in love with a property.",
-        stepOneTitle: "Estimate your budget",
-        stepOneCopy: "Use income, debt, down payment, and credit range to see a practical starting point.",
-        stepTwoTitle: "Review loan options",
-        stepTwoCopy: "Compare programs, monthly payment targets, and cash-to-close expectations.",
-        stepThreeTitle: "Shop with confidence",
-        stepThreeCopy: "Move forward with a clear plan and the documents you need to compete.",
-        aboutTitle: "About Alex",
-        aboutCopyOne: "Alex helps homebuyers turn confusing mortgage numbers into a clear plan. Whether you are buying your first home, moving up, or preparing after a credit reset, you will get straightforward guidance in plain language.",
-        aboutCopyTwo: "The goal is simple: help you understand what you can afford, what loan options may fit, and what steps can improve your approval path.",
-        featureOne: "First-time buyer guidance",
-        featureTwo: "Bilingual support",
-        featureThree: "Refinance and purchase options",
-        featureFour: "Clear payment planning",
-        aboutCta: "Ask Alex a Question",
-        reviewsTitle: "What buyers appreciate",
-        reviewsIntro: "Helpful mortgage support should feel responsive, transparent, and easy to understand.",
-        reviewOneTitle: "Clear from day one",
-        reviewOneCopy: "Alex explained the payment, the documents, and the timeline without pressure. We knew exactly what to expect.",
-        reviewOneName: "Maria R.",
-        reviewTwoTitle: "Fast answers",
-        reviewTwoCopy: "Every question was answered quickly. The numbers finally made sense before we started touring homes.",
-        reviewTwoName: "James T.",
-        reviewThreeTitle: "A real plan",
-        reviewThreeCopy: "We were not ready at first, but Alex showed us the exact steps to improve our buying position.",
-        reviewThreeName: "Sofia & Daniel",
-        bandTitle: "Know your buying power before you shop.",
-        bandCopy: "Get a personalized estimate and a clear mortgage game plan from Alex.",
-        bandCta: "Start Now",
-        contactTitle: "Contact Alex",
-        contactCopy: "Send your information and Alex will follow up to discuss affordability, pre-qualification, and your best next step.",
-        contactItemOne: "Quick affordability review",
+        resultCta: "Start My Pre-Approval",
+        faqTitle: "Questions borrowers ask before getting pre-approved.",
+        faqIntro: "Clear answers help turn a lead into a confident conversation.",
+        faqOneTitle: "Does this calculator approve my loan?",
+        faqOneCopy: "No. It is a planning tool. A true pre-approval depends on documents, credit, income, assets, program guidelines, and underwriting.",
+        faqTwoTitle: "What happens after I submit the form?",
+        faqTwoCopy: "Alex reviews your request and follows up with the best next step for your buying timeline.",
+        faqThreeTitle: "Can I get help in Spanish?",
+        faqThreeCopy: "Yes. Alex supports borrowers in English and Spanish so the numbers and process are easy to understand.",
+        faqFourTitle: "What if I am not ready yet?",
+        faqFourCopy: "You can still get a plan for credit, savings, documents, and timing so you know what to work on next.",
+        contactTitle: "Ready to get pre-approved?",
+        contactCopy: "Start with the short form above and Alex will follow up by email with your best next step.",
+        contactItemOne: "Quick pre-approval review",
         contactItemTwo: "English and Spanish support",
-        contactItemThree: "No-obligation conversation",
-        contactCall: "Call Alex",
-        labelMessage: "What can Alex help with?",
-        messagePlaceholder: "I want to know how much home I can afford.",
-        contactButton: "Send My Info",
-        formSuccess: "Thanks. Your information is ready for Alex to review.",
-        footerCopy: "\u00a9 2026 QualifyWithAlex.com. Mortgage information for planning purposes only.",
-        footerTop: "Back to top"
+        contactItemThree: "Mortgage plan before you shop",
+        contactCall: "Go to the Form",
+        messagePlaceholder: "I want to get pre-approved and understand my buying power.",
+        formSuccess: "Your email app is opening with your request ready to send.",
+        footerCopy: "\u00a9 2026 Magistrelli Mortgages. Mortgage information for planning purposes only.",
+        footerTop: "Back to top",
+        footerLegal: "Calculator results are estimates only. Actual eligibility, rates, payments, closing costs, taxes, and insurance vary by borrower, loan program, and property. All loans are subject to application, verification, and approval.",
+        mobileCalc: "Calculate",
+        mobileContact: "Pre-Approve",
+        estimateMessage: "I would like a personalized review of this estimate:",
+        menuOpen: "Open navigation",
+        menuClose: "Close navigation"
       },
       es: {
-        brandSub: "Guia hipotecaria clara",
+        navWhy: "Por Que Alex",
+        navPrograms: "Programas",
         navCalculator: "Calculadora",
-        navAbout: "Sobre Alex",
-        navReviews: "Resenas",
-        navContact: "Contacto",
-        navCta: "Precalificarme",
-        heroEyebrow: "Capacidad de compra, facil de entender",
-        heroHeadline: "Descubra Cuanta Casa Puede Comprar",
-        heroCopy: "Comience con un estimado rapido y conecte con Alex para una estrategia hipotecaria basada en sus ingresos, deudas mensuales, pago inicial y perfil de credito.",
-        heroPrimary: "Calcular Mi Presupuesto",
-        heroSecondary: "Hablar Con Alex",
+        navFaq: "Preguntas",
+        navCta: "Pre-Aprobarme",
+        heroEyebrow: "Prestamos en Florida con Alex Marroquin",
+        heroHeadline: "Pre-Aprobese Con Un Plan Hipotecario Que Le Quede",
+        heroCopy: "De Instagram a la solicitud, reciba una experiencia premium y simple: numeros claros, opciones inteligentes y apoyo bilingue de Alex.",
+        heroPrimary: "Pre-Aprobarme",
+        heroSecondary: "Revisar Capacidad",
         trustOneValue: "Rapido",
-        trustOneLabel: "estimado de compra",
+        trustOneLabel: "siguiente paso claro",
         trustTwoValue: "Claro",
-        trustTwoLabel: "siguientes pasos para compradores",
-        trustThreeValue: "1:1",
-        trustThreeLabel: "guia hipotecaria",
-        quickTitle: "Listo para ver sus opciones?",
-        quickCopy: "Comparta sus datos y Alex le ayudara a entender su poder de compra.",
-        quickButton: "Solicitar Mi Estimado",
+        trustTwoLabel: "plan de pago",
+        trustThreeValue: "Bilingue",
+        trustThreeLabel: "ingles y espanol",
+        quickTitle: "Comience su pre-aprobacion",
+        quickCopy: "Envie sus datos y Alex le contactara con su mejor siguiente paso.",
+        quickButton: "Enviar Mi Solicitud",
         labelName: "Nombre",
-        labelPhone: "Telefono",
         labelEmail: "Correo electronico",
+        whyEyebrow: "Por que trabajar con Alex",
+        whyTitle: "Una experiencia hipotecaria pulida que combina con sus metas.",
+        whyCopy: "Su pagina debe sentirse como la misma marca que las personas ven en sus videos: casas brillantes, fondos blancos, acentos azul marino y dorado, y pasos simples. Alex ayuda a convertir curiosidad en confianza con numeros faciles de entender.",
+        whyOne: "Guia de pre-aprobacion antes de buscar casa",
+        whyTwo: "Plan de pago, inicial y fondos para cierre",
+        whyThree: "Comunicacion en ingles y espanol",
+        whyFour: "Opciones claras sin presion",
+        whyCta: "Hablar Con Alex",
+        programsTitle: "Programas de prestamo para diferentes caminos.",
+        programsIntro: "Alex puede ayudarle a comparar opciones comunes y decidir que camino combina con su credito, ingresos, inicial y tiempo.",
+        programOneTitle: "Convencional",
+        programOneCopy: "Una buena opcion para muchos compradores con credito establecido y opciones flexibles de inicial.",
+        programTwoTitle: "FHA",
+        programTwoCopy: "Popular con primeros compradores y personas que buscan guias de calificacion mas flexibles.",
+        programThreeTitle: "VA",
+        programThreeCopy: "Para veteranos, miembros del servicio y familias elegibles que buscan beneficios fuertes de financiamiento.",
+        programFourTitle: "Refinanciamiento",
+        programFourCopy: "Revise su pago, plusvalia o estructura de prestamo cuando cambien sus metas.",
+        programFiveTitle: "Jumbo",
+        programFiveCopy: "Caminos de financiamiento para casas de mayor valor y escenarios de lujo.",
+        programSixTitle: "Plan de credito",
+        programSixCopy: "Si aun no esta listo, reciba un plan claro para mejorar antes de aplicar.",
+        calcTitle: "Calculadora de capacidad",
+        calcIntro: "Use este estimado rapido para entender un rango de compra realista. La aprobacion final depende de revision completa, programa, tasa, impuestos, seguro y detalles de la propiedad.",
         labelIncome: "Ingreso Anual",
         labelDebt: "Deuda Mensual",
         labelDown: "Pago Inicial",
@@ -1201,56 +1296,38 @@
         termThirty: "30 anos",
         termTwenty: "20 anos",
         termFifteen: "15 anos",
-        calcTitle: "Calculadora de Compra",
-        calcIntro: "Use este estimado rapido para entender un rango de compra realista. La aprobacion final depende de la revision completa, programa, tasa, impuestos, seguro y detalles de la propiedad.",
         resultKicker: "Presupuesto estimado",
         resultPayment: "Pago mensual estimado",
         resultLoan: "Monto estimado del prestamo",
         resultRate: "Tasa usada para el estimado",
         resultNote: "Esta calculadora es solo para planificacion y no es una aprobacion ni compromiso de prestamo.",
-        resultCta: "Recibir Revision Personalizada",
-        processTitle: "Un camino simple a su proxima casa",
-        processIntro: "Desde el primer estimado hasta una oferta con confianza, Alex le ayuda a entender los numeros antes de enamorarse de una propiedad.",
-        stepOneTitle: "Estime su presupuesto",
-        stepOneCopy: "Use ingresos, deudas, pago inicial y credito para ver un punto de partida practico.",
-        stepTwoTitle: "Revise opciones de prestamo",
-        stepTwoCopy: "Compare programas, pagos mensuales y costos estimados para cerrar.",
-        stepThreeTitle: "Compre con confianza",
-        stepThreeCopy: "Avance con un plan claro y los documentos necesarios para competir.",
-        aboutTitle: "Sobre Alex",
-        aboutCopyOne: "Alex ayuda a compradores a convertir numeros hipotecarios confusos en un plan claro. Ya sea su primera casa, una mudanza o una preparacion despues de cambios en credito, recibira guia directa y facil de entender.",
-        aboutCopyTwo: "La meta es simple: ayudarle a entender cuanto puede comprar, que opciones pueden funcionar y que pasos pueden mejorar su camino a la aprobacion.",
-        featureOne: "Guia para primeros compradores",
-        featureTwo: "Apoyo bilingue",
-        featureThree: "Opciones de compra y refinanciamiento",
-        featureFour: "Planificacion clara de pagos",
-        aboutCta: "Hacer una Pregunta a Alex",
-        reviewsTitle: "Lo que compradores valoran",
-        reviewsIntro: "El apoyo hipotecario debe sentirse rapido, transparente y facil de entender.",
-        reviewOneTitle: "Claro desde el primer dia",
-        reviewOneCopy: "Alex explico el pago, los documentos y el proceso sin presion. Supimos exactamente que esperar.",
-        reviewOneName: "Maria R.",
-        reviewTwoTitle: "Respuestas rapidas",
-        reviewTwoCopy: "Cada pregunta fue respondida rapido. Los numeros por fin tuvieron sentido antes de ver casas.",
-        reviewTwoName: "James T.",
-        reviewThreeTitle: "Un plan real",
-        reviewThreeCopy: "No estabamos listos al principio, pero Alex nos mostro los pasos exactos para mejorar nuestra posicion.",
-        reviewThreeName: "Sofia y Daniel",
-        bandTitle: "Conozca su poder de compra antes de buscar.",
-        bandCopy: "Reciba un estimado personalizado y un plan hipotecario claro de Alex.",
-        bandCta: "Comenzar Ahora",
-        contactTitle: "Contactar a Alex",
-        contactCopy: "Envie su informacion y Alex le contactara para hablar sobre capacidad de compra, precalificacion y su mejor siguiente paso.",
-        contactItemOne: "Revision rapida de compra",
+        resultCta: "Comenzar Mi Pre-Aprobacion",
+        faqTitle: "Preguntas antes de pre-aprobarse.",
+        faqIntro: "Respuestas claras ayudan a convertir un lead en una conversacion con confianza.",
+        faqOneTitle: "Esta calculadora aprueba mi prestamo?",
+        faqOneCopy: "No. Es una herramienta de planificacion. Una pre-aprobacion real depende de documentos, credito, ingresos, activos, guias del programa y revision.",
+        faqTwoTitle: "Que pasa despues de enviar el formulario?",
+        faqTwoCopy: "Alex revisa su solicitud y le contacta con el mejor siguiente paso para su tiempo de compra.",
+        faqThreeTitle: "Puedo recibir ayuda en espanol?",
+        faqThreeCopy: "Si. Alex apoya a compradores en ingles y espanol para que los numeros y el proceso sean faciles de entender.",
+        faqFourTitle: "Que pasa si aun no estoy listo?",
+        faqFourCopy: "Puede recibir un plan para credito, ahorros, documentos y tiempo para saber que trabajar despues.",
+        contactTitle: "Listo para pre-aprobarse?",
+        contactCopy: "Comience con el formulario corto de arriba y Alex le contactara por correo con su mejor siguiente paso.",
+        contactItemOne: "Revision rapida de pre-aprobacion",
         contactItemTwo: "Apoyo en ingles y espanol",
-        contactItemThree: "Conversacion sin obligacion",
-        contactCall: "Llamar a Alex",
-        labelMessage: "En que puede ayudar Alex?",
-        messagePlaceholder: "Quiero saber cuanta casa puedo comprar.",
-        contactButton: "Enviar Mi Informacion",
-        formSuccess: "Gracias. Su informacion esta lista para que Alex la revise.",
-        footerCopy: "\u00a9 2026 QualifyWithAlex.com. Informacion hipotecaria solo para planificacion.",
-        footerTop: "Volver arriba"
+        contactItemThree: "Plan hipotecario antes de buscar",
+        contactCall: "Ir al Formulario",
+        messagePlaceholder: "Quiero pre-aprobarme y entender mi poder de compra.",
+        formSuccess: "Su aplicacion de correo se esta abriendo con la solicitud lista para enviar.",
+        footerCopy: "\u00a9 2026 Magistrelli Mortgages. Informacion hipotecaria solo para planificacion.",
+        footerTop: "Volver arriba",
+        footerLegal: "Los resultados de la calculadora son solo estimados. La elegibilidad, tasas, pagos, costos de cierre, impuestos y seguro varian segun el solicitante, programa y propiedad. Todo prestamo esta sujeto a solicitud, verificacion y aprobacion.",
+        mobileCalc: "Calcular",
+        mobileContact: "Pre-Aprobar",
+        estimateMessage: "Quiero una revision personalizada de este estimado:",
+        menuOpen: "Abrir navegacion",
+        menuClose: "Cerrar navegacion"
       }
     };
 
@@ -1273,7 +1350,8 @@
       homeBudget: document.getElementById("homeBudget"),
       monthlyPayment: document.getElementById("monthlyPayment"),
       loanAmount: document.getElementById("loanAmount"),
-      rateUsed: document.getElementById("rateUsed")
+      rateUsed: document.getElementById("rateUsed"),
+      budgetMeter: document.getElementById("budgetMeter")
     };
 
     function readNumber(input) {
@@ -1303,6 +1381,7 @@
       outputs.monthlyPayment.textContent = currency.format(availableForMortgage + monthlyTaxesInsurance);
       outputs.loanAmount.textContent = currency.format(estimatedLoan);
       outputs.rateUsed.textContent = `${(annualRate * 100).toFixed(2)}%`;
+      outputs.budgetMeter.style.width = `${Math.min(Math.max(estimatedHomePrice / 750000 * 100, 6), 100)}%`;
     }
 
     function setLanguage(lang) {
@@ -1328,6 +1407,12 @@
         button.classList.toggle("active", active);
         button.setAttribute("aria-pressed", String(active));
       });
+
+      const menuButton = document.getElementById("menuButton");
+      const navigation = document.getElementById("mainNavigation");
+      if (menuButton && navigation) {
+        menuButton.setAttribute("aria-label", navigation.classList.contains("open") ? dictionary.menuClose : dictionary.menuOpen);
+      }
     }
 
     Object.values(fields).forEach((field) => {
@@ -1339,8 +1424,55 @@
       button.addEventListener("click", () => setLanguage(button.dataset.lang));
     });
 
+    const menuButton = document.getElementById("menuButton");
+    const navigation = document.getElementById("mainNavigation");
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = navigation.classList.toggle("open");
+      const lang = document.documentElement.lang || "en";
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? translations[lang].menuClose : translations[lang].menuOpen);
+    });
+
+    navigation.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navigation.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    document.getElementById("reviewEstimate").addEventListener("click", () => {
+      document.getElementById("preapproval-form").scrollIntoView({ behavior: "smooth", block: "center" });
+      window.setTimeout(() => document.getElementById("quick-name").focus(), 450);
+    });
+
+    document.querySelectorAll(".lead-capture").forEach((form) => {
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const status = form.querySelector(".form-status");
+        const lang = document.documentElement.lang || "en";
+        const data = new FormData(form);
+        const name = data.get("name") || "";
+        const email = data.get("email") || "";
+        const message = data.get("message") || translations[lang].messagePlaceholder;
+        const subject = lang === "es"
+          ? `Solicitud hipotecaria de ${name}`
+          : `Mortgage pre-approval request from ${name}`;
+        const body = [
+          `${translations[lang].labelName}: ${name}`,
+          `${translations[lang].labelEmail}: ${email}`,
+          "",
+          message
+        ].join("\n");
+
+        if (status) {
+          status.textContent = translations[lang].formSuccess;
+        }
+        window.location.href = `mailto:alex@qualifywithalex.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      });
+    });
+
     calculateAffordability();
   </script>
-  <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a46834b8acf50dff3c3f904" data-source="WEB_USER"></script>
 </body>
 </html>
